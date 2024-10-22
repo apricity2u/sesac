@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .board {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 0 3rem;
+    }
+
+    .box {
+      line-height: 40px;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    h1 {
+      text-align: center;
+      color: darkred;
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: 500;
+    }
+  
+    .menu > span {
+      font-style: italic;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="board" >
+    <header>
+      <h1>MENU</h1>
+    </header>
+    <main>
+      <section>
+        <h3>COFFEE</h3>
+        <hr>
+        <div class="box">
+          <div class="menu">
+            <span>아메리카노</span>
+            <div>5.0/5.5</div>
+          </div>
+          <div class="menu">
+            <span>카페라떼</span>
+            <div>6.0/6.5</div>
+          </div>
+          <div class="menu">
+            <span>바닐라라떼</span>
+            <div>6.0/6.5</div>
+          </div>
+          <div class="menu">
+            <span>카라멜마끼아또</span>
+            <div>6.5/7.0</div>
+          </div>
+        </div>
+      </section>
+    
+      <section>
+        <h3>ADE</h3>
+        <hr>
+        <div class="box">
+          <div class="menu">
+            <span>레몬에이드</span>
+            <div>6.0</div>
+          </div>
+          <div class="menu">
+            <span>자몽에이드</span>
+            <div>6.0</div>
+          </div>
+          <div class="menu">
+            <span>유자에이드</span>
+            <div>6.0</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

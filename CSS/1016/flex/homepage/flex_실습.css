@@ -1,0 +1,50 @@
+.space {
+  height: 1000px;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  border: 1px solid;
+  box-sizing: border-box;
+}
+
+.big-box {
+  width: 1000px;
+  height: 1000px;
+  border: 1px solid;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+  line-height: 200px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
