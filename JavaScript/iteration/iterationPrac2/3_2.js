@@ -8,18 +8,18 @@ const notLog = [1, 4, 5, 7];
 // 들어있는 경우를 체크하기 위해서는 한 번이면 충분함
 // 모든 경우를 돌면서 한번이라도 만나면 걔는 들어있는 것
 
-for (let num of arr){
+for (let num of arr) {
   let isInNotLog = false; // 처음엔 num이 notLog에 들어있지 않은 상태로 셋팅
 
   for (let notLogNum of notLog) {
     if (num === notLogNum) {
       isInNotLog = true; // arr에서 뽑은 num이 notLog에서 뽑은 notLogNum이랑 같으면 들어있는거니까
-      break // 멈춰! (같다는게 확인되면 더이상 확인 안해도 되니까!)
+      break; // 멈춰! (두 숫자가 같다는게 확인되면 더이상 확인 안해도 되니까!)
     }
   }
 
-  if (isInNotLog) continue // num= notLogNum 이 같으면 true로 바뀌었을테니까 반복문 계속 돌아야함
-  console.log(num) // 안들어있으면 출력
+  if (isInNotLog) continue; // num= notLogNum 이 같으면 true로 바뀌었을테니까 반복문 계속 돌아야함
+  console.log(num); // 안들어있으면 출력 = 두 숫자가 같지 않으면 출력
 
   // if (!isInNotLog){
   //   console.log(num)
