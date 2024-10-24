@@ -5,7 +5,7 @@ console.log('일반적인 사용법');
 
 numbers.forEach(
   // forEach를 사용하려면 numbers가 배열이어야함
-  // 왜? array의 method이기 때문에
+  // 왜? array의 method함수이기 때문에
   (num) => {
     // 화살표 함수 사용
     // num이라는 매개변수에 numbers라는 array 안에 있는 요소를
@@ -22,14 +22,19 @@ const numPrint = (num) => {
   console.log(num);
 };
 
-numbers.forEach(numPrint); // 인자 값으로 함수가 들어감.
+numbers.forEach(numPrint); // 인자 값으로 numPrint 함수가 들어감.
 // numPrint라는 함수가 작동됨
 // numPrint는 매개변수 num에 인자값을 넣으면 그 값을 출력한다.
 // num에 넣을 인자값은 뭔데? num은 numbers라는 array 안에 있는 요소들을 인자값으로 받는다
 
 // numbers.forEach(
-//   numPrint() // 괄호가 있으면 실행이 되기 때문에 undefined가 뜸
+//   numPrint()
 // )
+
+// 괄호가 있으면 실행이 되기 때문에 undefined가 출력됩니다.
+// 왜? numPrint가 실행되면 출력하는 기능을 하고 끝납니다.
+// return 값이 없기 때문에 undefined가 됩니다.
+// numbers.forEach(undefined) 로 되기 때문에 에러가 납니다.
 
 console.log('forEach는 아래 코드와 같은 의미.');
 
@@ -45,6 +50,10 @@ function myForEach(arr, func) {
 myForEach([1, 2, 3, 4], numPrint); // [1,2,3,4] 는 arr & numPrint는 함수
 
 console.log('콜백함수의 function자리 input값으로 call이 들어가면 안됨');
+
+numbers.forEach(
+  undefined // console_log()
+);
 
 // numbers.forEach();
 // numPrint() // 괄호가 있으면 함수의 결과값을 넘기는 것
