@@ -48,4 +48,11 @@ console.log('콜백함수의 function자리 input값으로 call이 들어가면 
 
 // numbers.forEach();
 // numPrint() // 괄호가 있으면 함수의 결과값을 넘기는 것
-              // numPrint의 return 값이 없기 때문에 에러가 뜸
+// numPrint의 return 값이 없기 때문에 에러가 뜸
+
+// 추가사항
+// value, index, arr 자체도 불러올 수 있음
+
+const numbersDetails = numbers.forEach((value, index, arr) => {
+  console.log(value, index, arr);
+});
