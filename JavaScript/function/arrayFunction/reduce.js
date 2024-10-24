@@ -7,7 +7,7 @@ const nums = [1, 2, 3, 4, 5, 6, 7];
 const mulNums = nums.reduce((acc, cur) => {
   console.log(acc, cur);
   return acc * cur;
-}, 1); // 여기서 1은 초기 값을 뜻합니다.
+}, 1); // 여기서 1은 초기 값을 뜻합니다. (초기값은 지정할 수 있습니다.)
 
 // 누적값 초기값
 // 1 1
@@ -33,9 +33,13 @@ const minValue = numbers.reduce((acc, cur) => {
 
 console.log(minValue);
 
+//삼항 연산자로 표현하는 방법
+
 const minValue2 = numbers.reduce(
-  (acc, cur) => (acc > cur ? cur : acc), // {}, return 생략 // 소괄호는 프리티어가 해주노
+  (acc, cur) => (acc > cur ? cur : acc),
   Infinity
 );
+// {}, return 생략
+// 삼항 연산자 겉에 소괄호는 프리티어가 해준겁니다..!
 
 console.log(minValue2);
