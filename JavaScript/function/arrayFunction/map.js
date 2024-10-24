@@ -7,6 +7,7 @@ const doubled = numbers.map(
     return num * 2;
     // numbers라는 array에 있는 요소들을 매개변수 num에 넣을거고.
     // 2를 곱한 값을 반환할거야
+    // 그리고 곱한 값을 새로운 array에 담을거야
   }
 );
 
