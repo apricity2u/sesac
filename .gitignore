@@ -1,1 +1,4 @@
 .prettierrc
+/node_modules
+package.json
+package-loc.json
