@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>숙소 예약</h1>
+    <form action="">
+      <h2>신상 정보</h2>
+      <label for="name">이름: </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="이름 입력"
+        required
+      />
+      <br />
+      <label for="email">이메일: </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="이메일 입력"
+        required
+      />
+      <br />
+      <label for="pic">예약자 사진: </label>
+      <input type="file" /> <br />
+
+      <hr />
+
+      <h2>상세 정보</h2>
+
+      <h3>선호 객실 타입</h3>
+
+      <label for="city">도시뷰</label>
+      <input type="checkbox" name="room_type" value="city" id="city" />
+      <!-- 서버로 room_type=city&room_type=mountain 라는 데이터가 전송되어 식별이 용이하다  -->
+      <label for="lake">레이크뷰</label>
+      <input type="checkbox" name="room_type" value="lake" id="lake" />
+      <label for="mountain">마운틴뷰</label>
+      <input type="checkbox" name="room_type" value="mountain" id="mountain" />
+
+      <h3>동행자 정보</h3>
+      <label for="num">인원수: </label>
+      <input type="number" name="num" id="num" />
+      <br />
+      <br />
+
+      <h3>기타</h3>
+
+      <label for="request">요청사항: </label>
+      <textarea name="request" id="request"> </textarea> <br />
+      <br />
+
+      <hr />
+
+      <input type="submit" />
+      <button>눌러</button>
+    </form>
+  </body>
+</html>
