@@ -1,12 +1,12 @@
-// 현재 상영 중인 영화 중 평점(vote_average)이 가장 높은 영화를 찾으시오.
+// 현재 상영 중인 영화 중 평점(vote_average)이 가장 높은 영화의 수익(revenue)를 찾으시오.
 
 async function getPost() {
   try {
-    const baseURL = "https://api.themoviedb.org/3/movie";
-    const path = "/now_playing";
+    const baseURL = 'https://api.themoviedb.org/3/movie';
+    const path = '/now_playing';
     const params = new URLSearchParams({
-      api_key: "699fc272ef469704ac75915ee54d9ab6",
-      language: "ko",
+      api_key: '699fc272ef469704ac75915ee54d9ab6',
+      language: 'ko',
     });
 
     let URL = `${baseURL}${path}?${params}`;
@@ -40,7 +40,7 @@ async function getPost() {
 
     console.log(revenue);
   } catch (error) {
-    console.error("Error:", error);
+    console.error('Error:', error);
   }
 }
 
