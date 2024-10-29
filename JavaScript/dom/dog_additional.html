@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .font {
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="" alt="강아지 사진" />
+    <!-- 
+      다음 api를 참고하여 img태그에 강아지 사진을 넣어주세요.
+      https://dog.ceo/dog-api/ 
+    -->
+    <script>
+      // 비동기 처리하기
+      async function randomDogImages() {
+        // 강아지 이미지를 랜덤으로 불러오는 URL
+        const URL = 'https://dog.ceo/api/breeds/image/random';
+
+        const response = await fetch(URL);
+        const data = await response.json();
+
+        // json // object에서 message라는 key 값에 value : 이미지 주소 값이 있음
+        const dataImage = data.message;
+
+        // img 요소를 선택해서
+        const dogImage = document.querySelector('img');
+        // src 속성에 dataImage에 담긴 이미지 주소 값을 넣음
+        // 이 때 변수명으로 넣어야 이미지 주소 값이 들어감 (string 형태X)
+        dogImage.src = dataImage;
+        // dogImage.setAttribute('src', dataImage);
+      }
+
+      // 이미지를 반복해서 뽑아오고 싶기 때문에
+      // setInterval이라는 함수 안에서 이미지 주소를 src에 삽입하는 randomDogImages 함수를 1초마다 실행시킨다
+      setInterval(() => {
+        randomDogImages();
+      }, 1000);
+    </script>
+  </body>
+</html>
