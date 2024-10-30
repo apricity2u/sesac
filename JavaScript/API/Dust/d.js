@@ -10,7 +10,7 @@ async function fetchDustInfo() {
   data = data.response.body.items;
 
   averageData = {};
-  
+
   for (let datum of data) {
     // 날짜 - 시간으로 나누기 (공백을 기준으로 split)
     // datum.dataTime.split('') => array ['2024-10-29', '14:00'] => 0번째 인덱스만 가져오기
@@ -18,11 +18,15 @@ async function fetchDustInfo() {
     // pm25Value를 parseInt로 string -> int
     let pm25Value = parseInt(datum.pm25Value);
 
+    // Object.keys() 문자열 키를 가진 배열로 반환
+    // .includes() 배열 안에 해당 원소가 있는지 없는지 확인하고 true // false 반환
+
     // averageData 날짜에 맞는 array가 있으면 array 안에 pm25Value 값을 push하고
     if (Object.keys(averageData).includes(dataTime)) {
       averageData[dataTime].push(pm25Value);
-    // 없으면 array 만들어주기
+      // 없으면 array 만들어주기
     } else {
+      // pm25Value를 담은 배열을 만들어줌 ex. [2]
       averageData[dataTime] = [pm25Value];
     }
   }
@@ -38,7 +42,6 @@ async function fetchDustInfo() {
     averageData[key] = value;
   }
   console.log(averageData);
-  
 }
 
 fetchDustInfo();
