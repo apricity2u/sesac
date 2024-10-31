@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flexBoard {
+        width: 500px;
+        height: 450px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+
+      .flexitems {
+        width: 120px;
+        height: 60px;
+        border: solid 1px;
+        border-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+    <div class="flexBoard">
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+      <div class="flexitems"></div>
+    </div>
+
+    <script>
+      const arr = [
+        "가경식",
+        "강경훈",
+        "김동훈",
+        "김상호",
+        "노영재",
+        "박재훈",
+        "박종빈",
+        "박하은",
+        "서승덕",
+        "오예진",
+        "원성준",
+        "육슬찬",
+        "윤대정",
+        "이상호",
+        "이재현",
+        "이태영",
+        "임수빈",
+        "임유진",
+        "정명훈",
+        "정승연",
+        "정여원",
+        "최원호",
+        "차윤선",
+      ];
+
+      const new_arr = _.shuffle(arr);
+      const flexitems = document.querySelectorAll(".flexitems");
+ 
+      for (let i=0; i<flexitems.length; i++) {
+        flexitems[i+1].textContent = new_arr[i]
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+        margin: 0.5rem;
+      }
+    </style>
+    <script src="
+    https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+    "></script>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+      const boxTags = document.querySelectorAll('.box');
+
+      boxTags.forEach((boxTag) => {
+        let red = _.random(0, 255);
+        let green = _.random(0, 255);
+        let blue = _.random(0, 255);
+
+        boxTag.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="" alt="강아지 사진" />
+    <button>멍!</button>
+
+    <script>
+      async function randomDogImages() {
+        const URL = "https://dog.ceo/api/breeds/image/random";
+
+        const response = await fetch(URL);
+        let data = await response.json();
+
+        data = data.message;
+
+        return data;
+      }
+
+      async function main() {
+        const dogImage = document.querySelector("img");
+        dogImage.style.width = "400px";
+        dogImage.style.height = "400px";
+        dogImage.src = await randomDogImages();
+
+        const button = document.querySelector("button");
+        button.addEventListener("click", async (event) => {
+          dogImage.src = await randomDogImages();
+        });
+      }
+
+      main();
+    </script>
+  </body>
+</html>
