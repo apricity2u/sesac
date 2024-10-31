@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+
+      .hidden {
+        /* display: none; */
+        visibility: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- html 코드도 자유롭게 수정하세요! -->
+
+    <!-- button을 클릭하면 원본 텍스트가 "텍스트가 바뀜"으로 변하도록 구현하시오. -->
+    <div class="container">
+      <div id="firstText">바뀔 예정인 텍스트</div>
+      <button id="firstButton">클릭</button>
+    </div>
+
+    <script>
+      const firstButton = document.querySelector("#firstButton");
+      const firstText = document.querySelector("#firstText");
+
+      firstButton.addEventListener("click", (event) => {
+        firstText.textContent = "텍스트가 바뀜";
+      });
+    </script>
+
+    <!-- 무언가를 클릭하면 원본 텍스트가 빨간색으로, 다른 무언가를 클릭하면 원본 텍스트가 파란색으로 변하도록 구현하시오. -->
+    <div class="container">
+      <div id="text-color">이 텍스트의 색상을 바꾸세요!</div>
+      <button id="redButton">빨강</button>
+      <button id="blueButton">파랑</button>
+    </div>
+
+    <script>
+      const redButton = document.querySelector("#redButton");
+      const blueButton = document.querySelector("#blueButton");
+      const textColor = document.querySelector("#text-color");
+
+      redButton.addEventListener("click", (event) => {
+        textColor.style.color = "red";
+      });
+
+      blueButton.addEventListener("click", (event) => {
+        textColor.style.color = "blue";
+      });
+    </script>
+
+    <!-- button을 클릭하면 텍스트가 보였다 안보였다 바뀌도록 구현하시오. -->
+    <!-- display : none 속성 및 class를 활용합니다. -->
+    <!-- visibility : hidden 속성 및 class를 활용합니다. -->
+    <div class="container">
+      <div id="hidden-text">보였다 안보였다</div>
+      <button id="hidden-button">클릭</button>
+    </div>
+
+    <script>
+      const hiddenButton = document.querySelector("#hidden-button");
+      const hiddenText = document.querySelector("#hidden-text");
+
+      hiddenButton.addEventListener("click", (event) => {
+        hiddenText.classList.toggle("hidden");
+      });
+    </script>
+
+    <!-- 입력을 하면 입력한 text가 아래의 div태그에 표현되도록 바꾸시오. -->
+    <!-- hint : input의 입력값은 value로 표현된다. -->
+    <div class="container">
+      <input type="text" />
+      <div id="newText"></div>
+    </div>
+
+    <script>
+      const inputText = document.querySelector("input");
+      const newText = document.querySelector("#newText");
+
+      inputText.addEventListener("input", (event) => {
+        newText.textContent = event.target.value;
+      });
+    </script>
+
+    <!-- 마우스를 올리면 배경색이 빨간색으로 변하고, 내리면 다시 검정색으로 변하는 기능을 구현하시오. -->
+    <div class="container">
+      <div class="box"></div>
+    </div>
+
+    <script>
+      const box = document.querySelector(".box");
+
+      box.addEventListener("mouseover", (event) => {
+        box.style.backgroundColor = "red";
+      });
+
+      box.addEventListener("mouseout", (event) => {
+        box.style.backgroundColor = "black";
+      });
+    </script>
+
+    <!-- 버튼을 누르면 숫자가 1 증가하는 기능을 구현하시오 -->
+    <div class="container">
+      <div id="num">0</div>
+      <button id="plusButton">버튼</button>
+    </div>
+
+    <script>
+      const plusButton = document.querySelector("#plusButton");
+      const num = document.querySelector("#num");
+
+      plusButton.addEventListener("click", (event) => {
+        num.textContent = parseInt(num.textContent) + 1;
+      });
+    </script>
+
+    <!-- 색상을 입력하면 텍스트의 색이 변하는 기능을 구현하시오. -->
+    <div class="container">
+      <h1>what color am I</h1>
+      <input type="text" id="colorInput" />
+    </div>
+
+    <script>
+      const colorInput = document.querySelector("#colorInput");
+      const title = document.querySelector("h1");
+
+      colorInput.addEventListener("input", (event) => {
+        title.style.color = event.target.value;
+      });
+    </script>
+  </body>
+</html>
