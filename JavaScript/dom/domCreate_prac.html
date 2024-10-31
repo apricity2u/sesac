@@ -55,6 +55,17 @@
 
         menuTag2.append(items);
       });
+
+      // newItems.forEach((el, idx) => {
+      //   const liTag = document.createElement('li');
+      //   liTag.textContent = el;
+      //   // menu2Tag.append(liTag);
+
+      //   setTimeout(() => {
+      //     menu2Tag.append(liTag);
+      //   }, (idx + 1) * 1000);
+      // });
+    
     </script>
 
     <!-- 아래 데이터를 사용해서 container 안에 카드 형태의 요소들을 생성하세요 -->
@@ -72,16 +83,18 @@
       //   <div class="card-body">내용</div>
       // </div>
 
-      // 1. 컨테이너를 만든다
-      // 2. 카드를 만든다
-      // 3. title과 body를 만든다
-      // 4. 넣어주기
-      
+      // container에 카드 3개를 넣는다.
+      // 3개를 넣고 - 반복 - 익숙해지면 먼저 해보자
+      // 카드를 먼저 만들어서 넣어보자
+            
       const containerTag = document.querySelector("#cardContainer");
       
       cards.forEach((card) => {
         // 구조 분해 할당
         // const {title, content, color} = cardData
+        // const title = cardData.title;
+        // const content = cardData.content;
+        // const color = cardData.color;
 
         // card 만들기
         const cardTag = document.createElement("div");

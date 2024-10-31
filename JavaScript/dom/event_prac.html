@@ -27,17 +27,24 @@
     <!-- html 코드도 자유롭게 수정하세요! -->
 
     <!-- button을 클릭하면 원본 텍스트가 "텍스트가 바뀜"으로 변하도록 구현하시오. -->
+
     <div class="container">
       <div id="firstText">바뀔 예정인 텍스트</div>
       <button id="firstButton">클릭</button>
     </div>
 
     <script>
-      const firstButton = document.querySelector("#firstButton");
-      const firstText = document.querySelector("#firstText");
+      // 1. 버튼이 필요합니다.
+      // 2. 버튼을 클릭하면 => 실행하라
+      // 3. 실행해라 -
+      // 3.A 원본 텍스트를 변경해라
+      // 3.A.a 원본 텍스트를 선택 => 변경
 
-      firstButton.addEventListener("click", (event) => {
-        firstText.textContent = "텍스트가 바뀜";
+      const firstButton = document.querySelector('#firstButton');
+      const firstText = document.querySelector('#firstText');
+
+      firstButton.addEventListener('click', (event) => {
+        firstText.textContent = '텍스트가 바뀜';
       });
     </script>
 
@@ -49,16 +56,16 @@
     </div>
 
     <script>
-      const redButton = document.querySelector("#redButton");
-      const blueButton = document.querySelector("#blueButton");
-      const textColor = document.querySelector("#text-color");
+      const redButton = document.querySelector('#redButton');
+      const blueButton = document.querySelector('#blueButton');
+      const textColor = document.querySelector('#text-color');
 
-      redButton.addEventListener("click", (event) => {
-        textColor.style.color = "red";
+      redButton.addEventListener('click', (event) => {
+        textColor.style.color = 'red';
       });
 
-      blueButton.addEventListener("click", (event) => {
-        textColor.style.color = "blue";
+      blueButton.addEventListener('click', (event) => {
+        textColor.style.color = 'blue';
       });
     </script>
 
@@ -71,11 +78,16 @@
     </div>
 
     <script>
-      const hiddenButton = document.querySelector("#hidden-button");
-      const hiddenText = document.querySelector("#hidden-text");
+      // 1. 버튼을 클릭하면 무엇인가 일어난다.
+      // 2. 보였다가 안보였다가 한다.
+      // 2.a 보인 상태에서 클릭 => 안보여지고
+      // 2.b 안보이는 상태에서 클릭 => 보이게 된다.
+      // 3. 안보이는 기능을 담은 class를 만들어서 토글한다.
+      const hiddenButton = document.querySelector('#hidden-button');
+      const hiddenText = document.querySelector('#hidden-text');
 
-      hiddenButton.addEventListener("click", (event) => {
-        hiddenText.classList.toggle("hidden");
+      hiddenButton.addEventListener('click', (event) => {
+        hiddenText.classList.toggle('hidden');
       });
     </script>
 
@@ -87,10 +99,10 @@
     </div>
 
     <script>
-      const inputText = document.querySelector("input");
-      const newText = document.querySelector("#newText");
+      const inputText = document.querySelector('input');
+      const newText = document.querySelector('#newText');
 
-      inputText.addEventListener("input", (event) => {
+      inputText.addEventListener('input', (event) => {
         newText.textContent = event.target.value;
       });
     </script>
@@ -101,14 +113,14 @@
     </div>
 
     <script>
-      const box = document.querySelector(".box");
+      const box = document.querySelector('.box');
 
-      box.addEventListener("mouseover", (event) => {
-        box.style.backgroundColor = "red";
+      box.addEventListener('mouseover', (event) => {
+        box.style.backgroundColor = 'red';
       });
 
-      box.addEventListener("mouseout", (event) => {
-        box.style.backgroundColor = "black";
+      box.addEventListener('mouseout', (event) => {
+        box.style.backgroundColor = 'black';
       });
     </script>
 
@@ -119,10 +131,10 @@
     </div>
 
     <script>
-      const plusButton = document.querySelector("#plusButton");
-      const num = document.querySelector("#num");
+      const plusButton = document.querySelector('#plusButton');
+      const num = document.querySelector('#num');
 
-      plusButton.addEventListener("click", (event) => {
+      plusButton.addEventListener('click', (event) => {
         num.textContent = parseInt(num.textContent) + 1;
       });
     </script>
@@ -134,10 +146,10 @@
     </div>
 
     <script>
-      const colorInput = document.querySelector("#colorInput");
-      const title = document.querySelector("h1");
+      const colorInput = document.querySelector('#colorInput');
+      const title = document.querySelector('h1');
 
-      colorInput.addEventListener("input", (event) => {
+      colorInput.addEventListener('input', (event) => {
         title.style.color = event.target.value;
       });
     </script>
