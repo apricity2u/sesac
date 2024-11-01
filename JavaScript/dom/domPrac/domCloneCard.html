@@ -25,28 +25,28 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      const cardTag = document.querySelector("#card");
-      cardTag.classList.add("card");
-      const imageTag = document.querySelector("#card-img");
-      imageTag.classList.add("card-img-top");
-      const cardBodyTag = document.querySelector("#card-body");
-      cardBodyTag.classList.add("card-body");
-      const cardTitleTag = document.querySelector("#card-title");
-      cardTitleTag.classList.add("card-title");
-      cardTitleTag.textContent = "카드 타이틀";
-      const cardSubTitleTag = document.querySelector("#card-subtitle");
+      const cardTag = document.querySelector('#card');
+      cardTag.classList.add('card');
+      const imageTag = document.querySelector('#card-img');
+      imageTag.classList.add('card-img-top');
+      const cardBodyTag = document.querySelector('#card-body');
+      cardBodyTag.classList.add('card-body');
+      const cardTitleTag = document.querySelector('#card-title');
+      cardTitleTag.classList.add('card-title');
+      cardTitleTag.textContent = '카드 타이틀';
+      const cardSubTitleTag = document.querySelector('#card-subtitle');
       cardSubTitleTag.classList.add(
-        "card-subtitle",
-        "mb-2",
-        "text-body-secondary"
+        'card-subtitle',
+        'mb-2',
+        'text-body-secondary'
       );
-      cardSubTitleTag.textContent = "카드 서브 타이틀";
-      const cardTextTag = document.querySelector("#card-text");
-      cardTextTag.classList.add("card-text");
-      cardTextTag.textContent = "카드 텍스트";
+      cardSubTitleTag.textContent = '카드 서브 타이틀';
+      const cardTextTag = document.querySelector('#card-text');
+      cardTextTag.classList.add('card-text');
+      cardTextTag.textContent = '카드 텍스트';
 
       async function randomDogImages() {
-        const URL = "https://dog.ceo/api/breeds/image/random";
+        const URL = 'https://dog.ceo/api/breeds/image/random';
 
         const response = await fetch(URL);
         let data = await response.json();
@@ -57,20 +57,22 @@
       }
 
       async function main() {
-        const dogImage = document.querySelector("#card-img");
-        dogImage.style.height = "200px";
+        const dogImage = document.querySelector('#card-img');
+        dogImage.style.height = '200px';
         dogImage.src = await randomDogImages();
 
-        const button = document.querySelector("button");
-        button.addEventListener("click", async (event) => {
-          const card = document.querySelector('#card')
-          const cloneCard = card.cloneNode(true)
-          const body = document.querySelector('body')
-          
-          const cloneCardImg = cloneCard.querySelector('img') 
-          cloneCardImg.src = await randomDogImages()
-          body.append(cloneCard)
+        const button = document.querySelector('button');
+        button.addEventListener('click', async (event) => {
+          const card = document.querySelector('#card');
+          const cloneCard = card.cloneNode(true);
+          // cloneNode (true) : card 태그 하단의 모든 태그 복사
+          // cloneNode (false) : card 태그 한 개만 복사
+          const body = document.querySelector('body');
 
+          const cloneCardImg = cloneCard.querySelector('img');
+          // 꼭 document에서 querySelector 해야 하는 것은 아님
+          cloneCardImg.src = await randomDogImages();
+          body.append(cloneCard);
         });
       }
 
