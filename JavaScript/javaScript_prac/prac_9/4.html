@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .greet {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p class="greet">Hello World</p>
+      <ul>
+        <li id="list-1">1 <button>삭제</button></li>
+        <li id="list-2">2 <button>삭제</button></li>
+        <li id="list-3">3 <button>삭제</button></li>
+        <li id="list-4">4 <button>삭제</button></li>
+        <li id="list-5">5 <button>삭제</button></li>
+      </ul>
+    </div>
+    <script>
+      // 4. li 태그 중 id가 list-4인 태그를 삭제한다.
+      const liTag4 = document.querySelector('#list-4')
+      liTag4.remove()
+    </script>
+  </body>
+</html>

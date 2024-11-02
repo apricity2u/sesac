@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      // 1. id가 container인 div 태그를 생성한다.
+      // 해당 body 태그의 자식 태그로 추가한다.
+      const newDivTag = document.createElement('div')
+      newDivTag.id = 'container'
+      
+      const bodyTag = document.querySelector('body')
+      bodyTag.append(newDivTag)
+    </script>
+  </body>
+</html>

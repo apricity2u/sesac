@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .greet {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      // 2. 텍스트가 Hello World이고, class가 greet인 p 태그를 생성한다.
+      // 해당 태그를 div#container의 자식 태그로 추가한다.
+      const pTag = document.createElement('p')
+      pTag.textContent = 'Hello World'
+      pTag.classList.add('greet')
+      
+      const divTag = document.querySelector('#container')
+      divTag.append(pTag)
+
+    </script>
+  </body>
+</html>

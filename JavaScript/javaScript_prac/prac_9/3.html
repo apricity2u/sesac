@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .greet {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p class="greet">Hello World</p>
+    </div>
+    <script>
+      // 3. 5개의 li 자식 태그를 가진 ul 태그를 div#container의 자식 태그로 추가한다.
+      // 각 li 태그의 텍스트는 1, 2, 3, 4, 5로 설정한다.
+      // 각 li 태그의 id는 list-1, list-2, list-3, list-4, list-5로 설정한다.
+      // 각 li 태그에는 텍스트가 "삭제"인 button 태그를 자식 태그로 추가한다.
+      
+      const ulTag = document.createElement('ul')
+      
+      for(let i=1; i<=5; i++) {
+        const liTag = document.createElement('li')
+        liTag.textContent = i
+        liTag.id = `list-${i}`
+        
+        const button = document.createElement('button')
+        button.textContent = '삭제'
+        
+        liTag.append(button)
+        ulTag.append(liTag)
+      }
+      
+      const divTag = document.querySelector('#container')
+      divTag.append(ulTag)
+    
+    </script>
+  </body>
+</html>
