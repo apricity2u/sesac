@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="btn-1">Hello HTML</button>
+      <button id="btn-2">Hello CSS</button>
+      <button id="btn-3">Hello JavaScript</button>
+    </div>
+    <script>
+      // 1. 각 버튼에 아래 이벤트를 추가한다.
+      // 버튼을 클릭하면 버튼의 텍스트를 alert() 함수로 출력한다.
+      // ex) alert("Hello HTML")
+
+      for (let i = 1; i <= 3; i++) {
+        const button = document.querySelector(`#btn-${i}`);
+        button.addEventListener('click', (e) => {
+          alert(button.textContent);
+        });
+      }
+    </script>
+  </body>
+</html>

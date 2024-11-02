@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="text-input" />
+      <button id="btn">li 태그 추가</button>
+      <ul id="list"></ul>
+    </div>
+    <script>
+      // 4. button#btn에 아래 이벤트를 추가한다.
+      // 버튼을 클릭하면 li 태그를 생성하고, ul#list의 자식 태그로 추가한다.
+      // li 태그의 텍스트는 input#text-input에 입력한 텍스트로 설정한다.
+      // 이때, 입력한 텍스트의 양쪽 공백을 제거한다.
+      // 이때, 입력 필드가 비어있다면 li 태그를 생성 및 추가하지 않는다.
+      // 각 li 태그에는 아래 이벤트를 추가한다.
+      // li 태그를 클릭할 때 마다 .completed를 토글한다.
+
+      const button = document.querySelector('#btn');
+      const input = document.querySelector('#text-input');
+      const list = document.querySelector('#list');
+
+      button.addEventListener('click', () => {
+        const inputText = input.value.trim();
+
+        if (inputText === '') return;
+
+        const listItem = document.createElement('li');
+        listItem.textContent = inputText;
+
+        listItem.addEventListener('click', () => {
+          listItem.classList.toggle('completed');
+        });
+
+        list.appendChild(listItem);
+
+        input.value = '';
+      });
+    </script>
+  </body>
+</html>

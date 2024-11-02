@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="btn">li 태그 추가</button>
+      <ul id="list"></ul>
+    </div>
+    <script>
+      // 2. button#btn 버튼에 아래 이벤트를 추가한다.
+      // 버튼을 클릭하면 li 태그를 생성하고, ul#list의 자식 태그로 추가한다.
+      // li 태그의 텍스트는 1 부터 시작하여 버튼을 누를 때 마다 1씩 증가한다.
+      // ex)
+      // <li>1</li>
+      // <li>2</li>
+      // <li>3</li>
+
+      const button = document.querySelector('#btn');
+      const ulTag = document.querySelector('#list');
+
+      let i = 1
+      button.addEventListener('click', (e) => {
+        const liTag = document.createElement('li');
+        liTag.textContent = i++
+        ulTag.append(liTag)
+      });
+    </script>
+  </body>
+</html>
