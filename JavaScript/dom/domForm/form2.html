@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form >
+      <div>title</div>
+      <input type="text" name="title" />
+      <div>body</div>
+      <input type="text" name="body" />
+      <input type="submit" />
+    </form>
+    <script>
+      // 1. 폼에 입력한 값을 가져오고 싶음
+      // - form을 선택한다
+      const form = document.querySelector('form');
+      form.addEventListener('submit', async (e) => {
+        // - form 제출 후 이동 없이 현재 화면에 있고 싶음
+        //    => 그러려면 'submit' 이벤트를 preventDefault로 막아준다
+        e.preventDefault();
+        
+        // - form에 입력한 값을 가져오고 싶다
+        //    => querySelector로 input 태그 안의 value(입력값)를 가져온다
+        const inputTitle = document.querySelector('input[name=title]').value;
+        const inputBody = document.querySelector('input[name=body]').value;
+
+        // 2. 입력한 값을 서버에 넣고 싶음
+        // - 서버에 요청을 한다 (fetch 사용 => async / await)
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/posts',
+          {
+            // - 어떤 요청? 데이터를 생성하고 추가하고 싶음 (method : post)
+            // - body 안에 input value 값 넣고 json 형태로 바꾸기
+            method: 'POST',
+            body: JSON.stringify({
+              title: inputTitle,
+              body: inputBody,
+              userId: 1,
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }
+        );
+        // - data를 json 형태로 변환
+        // - title = data.title // body = data.body (구조분해할당)
+        // *여기서 title은 inputtitle과 같을 수도 있고 다를 수도 있다
+        // *title은 서버에 제출 후, 서버에서 가져온 데이터이기 때문에 trim된 데이터 값이 들어올 수 있기 때문이다.
+        const data = await response.json();
+        const { title, body } = data;
+        
+        // 3. 화면에서 내가 입력한 값을 보고 싶다
+        // - div 태그를 만든다
+        // - div 태그 안에 data의 title과 body를 text로 넣는다
+        // - div 태그를 body 안에 넣는다
+        const divTag = document.createElement('div');
+        divTag.textContent = `${title} : ${body}`;
+        document.querySelector('body').append(divTag);
+      });
+    </script>
+  </body>
+</html>
