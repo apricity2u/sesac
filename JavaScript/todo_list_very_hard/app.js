@@ -6,12 +6,28 @@ const URL = 'http://localhost:3000/todos';
 
 document.addEventListener('DOMContentLoaded', initTodos);
 
+// <GET>
+// 1. 새로고침할 때마다 현재 database에 있는 todo List를 조회하는 기능 만들기
+
+// 1-1. fetch로 database에 있는 데이터를 가져온다. (GET)
+// 1-1-a. data는 array 내부에 object가 있는 형태
+// 1-1-b. forEach 함수를 통해서 각 object마다 renderToDo 함수를 실행한다.
+
+async function initTodos() {
+  const response = await fetch(URL);
+  const data = await response.json();
+
+  data.forEach((datum) => {
+    renderToDo(datum);
+  });
+}
+
 // todo list를 생성하는 함수
 // 텍스트 + 완료버튼 + 삭제버튼
 function renderToDo(todo) {
   // <ul> 내부 <li> 만들기
-  const container = document.querySelector('.container');
-  const toDoBlock = document.createElement('div');
+  const toDoList = document.querySelector('#todo-list');
+  const toDoBlock = document.createElement('li');
   toDoBlock.classList.add('flexbox', 'margin');
 
   // <li> 내부 <span> 만들기
@@ -23,7 +39,7 @@ function renderToDo(todo) {
   finishButton.textContent = '완료';
   finishButton.classList.add('finish-button');
   finishButton.addEventListener('click', async (event) => {
-    // 클로저로 인해 초기 값이 저장되므로, completed 상태를 반대로 바꿔줌
+    // 클로저로 인해 초기 값이 저장되므로, completed 상태를 반대로 바꿔주기
     // 상세한 내용은 최하단 주석에서 확인
     todo.completed = !todo.completed;
 
@@ -51,23 +67,7 @@ function renderToDo(todo) {
   }
   // <li> 내부에 텍스트, 완료버튼, 삭제버튼 넣기
   toDoBlock.append(toDoContent, finishButton, deleteButton);
-  container.append(toDoBlock);
-}
-
-// <GET>
-// 1. 새로고침할 때마다 현재 database에 있는 todo List를 조회하는 기능 만들기
-
-// 1-1. fetch로 database에 있는 데이터를 가져온다. (GET)
-// 1-1-a. data는 array 내부에 object가 있는 형태
-// 1-1-b. forEach 함수를 통해서 각 object마다 renderToDo 함수를 실행한다.
-
-async function initTodos() {
-  const response = await fetch(URL);
-  const data = await response.json();
-
-  data.forEach((datum) => {
-    renderToDo(datum);
-  });
+  toDoList.append(toDoBlock);
 }
 
 // <POST>
@@ -97,6 +97,8 @@ async function addTodo() {
   });
   const data = await response.json();
   renderToDo(data);
+
+  inputTag.value = '';
 }
 
 // <PATCH>
@@ -119,8 +121,6 @@ async function completedTodo(id, completed) {
       'Content-type': 'application/json; charset=UTF-8',
     },
   });
-  const data = await response.json();
-  return data;
 }
 
 // <DELETE>
@@ -133,12 +133,7 @@ async function completedTodo(id, completed) {
 async function deleteTodo(id) {
   const response = await fetch(`${URL}/${id}`, {
     method: 'DELETE',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
   });
-  const data = await response.json();
-  return data;
 }
 
 ///////////////////////////////////////////////////////////////////////////
