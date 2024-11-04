@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "예습하기",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "content": "숙제하기",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "content": "노래하기",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "content": "ㅈㅇㅈㅇ",
+      "completed": false
+    }
+  ]
+}
