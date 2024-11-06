@@ -1,5 +1,5 @@
 export default function Button(props) {
-  const { name, color } = props;
+  const { text, color } = props;
 
   return (
     <button
@@ -8,7 +8,7 @@ export default function Button(props) {
         backgroundColor: color,
       }}
     >
-      {name}
+      {text}
     </button>
   );
 }

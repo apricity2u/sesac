@@ -42,11 +42,11 @@ function App() {
         title={"아이유"}
         content={"내용"}
       ></Card>
-      <CancleButton name="취소"></CancleButton>
-      <Button name={"확인"} color={"blue"}></Button>
-      <Button name={"취소"} color={"red"}></Button>
-      <Button name={"보류"} color={"gray"}></Button>
-      <Button name={"1억년"} color={"pink"}></Button>
+      <CancleButton>취소</CancleButton>
+      <Button text={"확인"} color={"blue"}></Button>
+      <Button text={"취소"} color={"red"}></Button>
+      <Button text={"보류"} color={"gray"}></Button>
+      <Button text={"1억년"} color={"pink"}></Button>
 
       <div style={columnFlexBox}>
         <Header title={"More"}></Header>
