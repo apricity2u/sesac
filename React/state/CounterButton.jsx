@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Button from './Button'
 
 export default function CounterButton() {
 
@@ -24,6 +25,11 @@ export default function CounterButton() {
       <div>{num}</div>
       <button onClick={minus}>-</button>
       <button onClick={plus}>+</button>
+
+      {/* Button을 컴포넌트로 만들고 이벤트 전달하기 */}
+      {/* 아래에서 onClick은 그저 props에 불가함 */}
+      <Button onClick={()=>{setNum((prey) => prey+1)}}>+</Button>
+      <Button onClick={minus}>-</Button>
     </>
   )
 }
