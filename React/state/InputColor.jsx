@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 export default function InputColor() {
-  const [myColor, setColor] = useState(" ");
+  const [myColor, setColor] = useState("");
 
   // 현재 매개변수 value에는 input한 값이 있다
   function showColor(value) {
     // state변수인 myColor에 value를 할당한다.
-    setColor((myColor) => (myColor = value));
+    setColor(value);
   }
 
   return (
