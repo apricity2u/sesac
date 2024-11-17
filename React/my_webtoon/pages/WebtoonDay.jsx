@@ -1,15 +1,16 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 export default function WebtoonDay() {
   const { day } = useParams();
-  const location = useLocation();
+  // day를 가지고 fetch(`localhost/webtoon/${day}`)의 data를 보여줌
 
-  const { webtoon } = location.state;
+  // 이상한 주소로 접근한 경우 웹툰 메인 페이지로 이동하기
+  const weekData = new Set(["mon", "tue", "wed", "thu", "fri", "sat", "sun"])
+  if (!weekData.has(day)) {
+    return <Navigate to="/webtoon" replace></Navigate>
 
-  return (
-    <>
-      <h3>{webtoon.day}</h3>
-    </>
-  );
+  }else {
+    return <div>{day}</div>
+  }
 }

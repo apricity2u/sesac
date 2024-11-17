@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
-import RootLayout from "../../RootLayout";
+import RootLayout from "../layout/RootLayout";
 import NotFound from "../pages/NotFound";
 import Webtoon from "../layout/Webtoon";
 import WebtoonMain from "../pages/WebtoonMain";
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
           {
             path: "/webtoon/:day",
             element: <WebtoonDay />,
+            // 잘못된 url로 접속했을 때 loader, action 등과 같은 방식이 있음
           },
         ],
       },

@@ -1,19 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Header() {
+
   return (
     <header>
       <nav>
         <ul className="homeNav">
           <li>
-            <Link to="/">NAVER</Link>
+            <Link to="/"><h1>NAVER</h1></Link>
           </li>
           <li>
-            <Link to="/webtoon">웹툰</Link>
+            <Link to="/webtoon"><h2>웹툰</h2></Link>
           </li>
           <li>
-            <Link to="/novel">웹소설</Link>
+            <Link to="/novel"><h2>웹소설</h2></Link>
           </li>
         </ul>
       </nav>

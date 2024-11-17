@@ -1,15 +1,14 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 export default function NovelGenre() {
   const { genre } = useParams();
-  const location = useLocation();
 
-  const { novel } = location.state;
-
-  return (
-    <>
-      <h3>{novel.genre}</h3>
-    </>
-  );
+  // 이상한 주소로 접근한 경우 웹툰 메인 페이지로 이동하기
+  const genreData = new Set(["modern", "mystery", "sf", "fantasy"]);
+  if (!genreData.has(genre)) {
+    return <Navigate to="/novel" replace></Navigate>;
+  } else {
+    return <div>{genre}</div>;
+  }
 }
