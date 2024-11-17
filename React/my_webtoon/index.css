@@ -1,0 +1,18 @@
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+.homeNav {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.homeBoard {
+  border: 1px solid lightgray;
+}
