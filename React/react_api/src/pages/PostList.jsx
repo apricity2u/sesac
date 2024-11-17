@@ -5,6 +5,9 @@ import axios from 'axios';
 
 export default function PostList() {
   const navigate = useNavigate();
+  // react는 posts가 무엇인지 모르기 때문에, state로 관리를 해줘야 한다.
+  // 서버에서 데이터를 가져와서 채워질 데이터임
+  // posts는 존재하지 않았다가 데이터를 받으면 채워짐 (결국 fetch하는 데이터는 state로 써야함)
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   // true & false 에러가 있다 없다
@@ -25,7 +28,10 @@ export default function PostList() {
 
         // json 형태로 자동으로 변환됨
         const data = response.data;
+
         // setLoading(false);
+
+        //posts에 서버에서 받은 데이터를 넣어줌
         setPosts(data);
       } catch (err) {
         setError('무언가의 에러가 났어');

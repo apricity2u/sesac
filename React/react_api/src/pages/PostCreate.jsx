@@ -36,6 +36,7 @@ export default function PostCreate() {
       const url = "http://localhost:3000/posts";
       const response = await axios.post(url, formData);
       const data = response.data;
+      // 서버에서 id를 제공함
       const id = data.id;
       navigate(`/posts/${id}`);
     }

@@ -21,7 +21,7 @@ export default function PostDetail() {
         // navigate('/posts')
         // TODO: 나중에 고칠 것
         navigate('/not-found', {replace : true});
-        // posts -> posts/123 -> not-found (뒤로 가기하면 not-found 무한루프)
+        // posts -> posts/123 -> not-found (뒤로 가기하면 posts/123은 없으니까 not-found 무한루프)
         // replace : true로 하면 posts/123은 건너뛰고 돌아감
       } finally {
         setLoading(false);
