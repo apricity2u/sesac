@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import postApi from '../api/postsApi';
 
 export default function PostList() {
   const navigate = useNavigate();
@@ -20,17 +21,19 @@ export default function PostList() {
     // const posts = useSelector((state) => state.posts);
     async function fetchPosts() {
       try {
-        const url = 'http://localhost:3000/posts';
+        //    const url = 'http://localhost:3000/posts';
 
-        // 에러가 나면 여기서 멈추고 catch 코드 실행
-        const response = await axios.get(url);
-        // const response = await axios({ url: url });
+        //    // 에러가 나면 여기서 멈추고 catch 코드 실행
+        //    const response = await axios.get(url);
+        //    // const response = await axios({ url: url });
 
-        // json 형태로 자동으로 변환됨
-        const data = response.data;
+        //    // json 형태로 자동으로 변환됨
+        //    const data = response.data;
+
+        // 위의 과정을 아래 한 줄로 정리
+        const data = await postApi.getPosts();
 
         // setLoading(false);
-
         //posts에 서버에서 받은 데이터를 넣어줌
         setPosts(data);
       } catch (err) {
@@ -67,8 +70,7 @@ export default function PostList() {
       <ul>
         {myInput &&
           posts
-            .filter((post) => 
-              post.title.includes(myInput))
+            .filter((post) => post.title.includes(myInput))
             .map((post) => {
               return <li key={post.id}>{post.title}</li>;
             })}

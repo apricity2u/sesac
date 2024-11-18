@@ -1,5 +1,11 @@
 import api from './axios';
 
+// 현재는 posts만 관리하지만, 데이터가 많아지면 endpoint를 따로 관리하는게 좋을 수 있다.
+//  const endpoint = {
+//    posts : {}
+//      get : '',
+//      getById : (postId) => `/${postId}`
+
 const postApi = {
   // 1. PostList (GET)
   getPosts: async () => {
@@ -17,3 +23,5 @@ const postApi = {
     return response.data;
   },
 };
+
+export default postApi

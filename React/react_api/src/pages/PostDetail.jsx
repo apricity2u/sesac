@@ -3,6 +3,7 @@ import { isNull } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import postApi from '../api/postsApi';
 
 export default function PostDetail() {
   const { postId } = useParams();
@@ -11,11 +12,14 @@ export default function PostDetail() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:3000/posts/${postId}`;
+    // const url = `http://localhost:3000/posts/${postId}`;
     async function fetchPost() {
       try {
-        const response = await axios.get(url);
-        const data = response.data;
+        // const response = await axios.get(url);
+        // const data = response.data;
+        // 위의 두 줄을 한 줄로 정리
+        const data = await postApi.getPostById(postId)
+
         setPost(data);
       } catch (err) {
         // navigate('/posts')

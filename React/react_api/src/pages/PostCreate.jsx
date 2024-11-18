@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addPost } from "../store/slices/postsSlice";
-import { Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPost } from '../store/slices/postsSlice';
+import { Navigate, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import postApi from '../api/postsApi';
 
 export default function PostCreate() {
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const [formData, setFormData] = useState({ title: "", content: "" });
+  const [formData, setFormData] = useState({ title: '', content: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // 최초 한번, 또는 dependency가 바뀌었을 때
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate("/");
+      navigate('/');
       // 로그인 페이지로 이동 시키면 더 좋을 듯
     }
   }, [isLoggedIn]);
@@ -33,9 +34,13 @@ export default function PostCreate() {
     e.preventDefault();
 
     async function createPost() {
-      const url = "http://localhost:3000/posts";
-      const response = await axios.post(url, formData);
-      const data = response.data;
+      // const url = "http://localhost:3000/posts";
+      // const response = await axios.post(url, formData);
+      // const data = response.data;
+
+      // 위의 세 줄을 한 줄로 정리
+      const data = await postApi.createPost(formData);
+
       // 서버에서 id를 제공함
       const id = data.id;
       navigate(`/posts/${id}`);
