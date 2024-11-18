@@ -3,6 +3,7 @@ import axios from 'axios';
 // 현재는 posts에 대한 instance
 const instance = axios.create({
   baseURL: 'http://localhost:3000/posts',
+  // baseURL: import.meta.env.VITE_API_URL + '/posts',
 });
 
 // axios.get("http://localhost:3000/posts")
