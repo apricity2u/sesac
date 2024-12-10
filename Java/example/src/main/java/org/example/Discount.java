@@ -1,6 +1,6 @@
 package org.example;
 
-public class discount {
+public class Discount {
     public static void main(String[] args) {
 
         class Solution {
