@@ -21,6 +21,8 @@ class Solution {
     public static  int[] solution(int[] numbers1, int[] numbers2) {
         int[] answer = new int[numbers1.length + numbers2.length];
 
+        // 첫번째 방법
+        // answer의 index 조작
         int index = 0;
         for (int number : numbers1) {
             answer[index] = number;
@@ -31,6 +33,8 @@ class Solution {
             index++;
         }
 
+        // 두번째 방법
+        // index를 따로 설정하지 않고, numbers1.length + i 로 answer의 나머지 인덱스 접근
         int[] answer2 = new int[numbers1.length + numbers2.length];
 
         for (int i = 0; i < numbers1.length; i++) {

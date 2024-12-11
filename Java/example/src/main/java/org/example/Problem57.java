@@ -22,6 +22,8 @@ class Solution {
         int[] answer = new int[numbers.length * n ];
 
         int index = 0;
+
+        // numbers를 n번만큼 복사해야함
         for (int i = 0; i < n; i++) {
 
             for (int number : numbers) {

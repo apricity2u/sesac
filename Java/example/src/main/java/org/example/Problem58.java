@@ -21,9 +21,17 @@ class Solution {
 
         int index = 0;
         for (int i = start; i <= end; i++) {
+
+            // 첫번째 방법
+            // index 변수를 만들어서 활용하기
             answer[index] = numbers[i];
             index++;
-            // 같은 코드
+
+            // 두번째 방법
+            // answer에는 0번 인덱스부터 접근해야하니까 i - start해주면 됨
+            // ex. start = 2
+            // answer[2-2], answer[3-2], answer[4-2] ...
+
             answer[i - start] = numbers[i];
         }
         return answer;
