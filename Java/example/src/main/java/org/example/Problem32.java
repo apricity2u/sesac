@@ -19,12 +19,14 @@ class Solution {
         int answer = 0;
 
         // 하나짜리 string을 char로 변경하려면?
+        // c의 0번째 인덱스에 있는 값을 찾으면 됨
         char target = c.charAt(0);
 
         char[] characters = word.toCharArray();
 
         for (char character : characters) {
 
+            // char끼리는 비교 가능하다
             if (character == target) {
                 answer++;
             }
