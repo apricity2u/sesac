@@ -15,7 +15,7 @@ public class Problem24 {
     //    public (타입) solution 을
     //    public static (타입) solution 으로 변경
     class Solution {
-        public int solution(int start, int end) {
+        public static int solution(int start, int end) {
             int answer = 0;
             int num = 0;
 
