@@ -1,12 +1,12 @@
-package org.example;
+package org.example.javaintro;
 
 public class Dog {
 
     // 개체수
-    static int count;
+    public static int count;
 
-    String breed;
-    String name;
+    public String breed;
+    public String name;
 
     public Dog(String breed, String name){
         this.breed = breed;
@@ -15,15 +15,15 @@ public class Dog {
         count++;
     }
 
-    String dogAction(String action) {
+    public String dogAction(String action) {
         return this.name + ' ' + action;
     }
 
-    void sit() {
+    public void sit() {
         System.out.println(this.name + " sit");
     }
 
-    void hand() {
+    public void hand() {
         System.out.println(this.name + " hand");
     }
 

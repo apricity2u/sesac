@@ -1,5 +1,11 @@
 package org.example;
 
+import org.example.javaintro.Dog;
+import org.example.practice.Bread;
+
+import static java.lang.Math.*;
+import static org.example.practice.Coffee.*;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -85,6 +91,11 @@ public class Main {
         System.out.println(p1.name);
         System.out.println(p2.name);
 
+        taste();
+        Bread.taste();
+
+        abs(-3);
+        pow(3, 5);
 
     }
 }
