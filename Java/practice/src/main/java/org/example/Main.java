@@ -47,6 +47,36 @@ public class Main {
         mp3.volumeDown();
         mp3.getInfo();
 
+        // 과연 계산기를 만들 때 숫자를 입력하는게 좋을까?
+        // 계산기가 만들어지고, 연산을 할 때 숫자를 입력하는게 더 좋을 것 같다.
+        Calculator cal = new Calculator(12, 4);
+        System.out.println(cal.add());
+        System.out.println(cal.minus());
+        System.out.println(cal.multiply());
+        System.out.println(cal.divide());
+
+        System.out.println("----------------------");
+
+        // 인스턴스 메서드
+        // add, minus 메서드를 인스턴스 생성 후에 사용 가능하다
+        Calculator2 cal2 = new Calculator2();
+        System.out.println(cal2.add(10, 4));
+        System.out.println(cal2.minus(30, 12));
+
+        // Calculator2는 사실 인스턴스에 구애를 받지 않을 수도 있다
+        // 이를 클래스 메서드라고 부름 (static method)
+        // 인스턴스 없이도 사용 가능
+        System.out.println(Calculator2.staticAdd(10, 4));
+
+        Rectangle rectangle = new Rectangle(10, 30);
+        // static 변수는 인스턴스 & 클래스 모두 접근 가능하다.
+        // 주의할 점 : 함부로 클래스나 개별 인스턴스에서 static 변수를 변경하면 안된다.
+        System.out.println(rectangle.angleCount);
+        System.out.println(Rectangle.angleCount);
+
+        Dog happy = new Dog("puddle", "happy");
+        Dog poppy = new Dog("puddle", "poppy");
+        System.out.println(Dog.count);
     }
 }
 /*
