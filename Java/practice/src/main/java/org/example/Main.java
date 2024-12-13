@@ -77,6 +77,15 @@ public class Main {
         Dog happy = new Dog("puddle", "happy");
         Dog poppy = new Dog("puddle", "poppy");
         System.out.println(Dog.count);
+
+        // Person 생성자
+        System.out.println("person");
+        Person p1 = new Person();
+        Person p2 = new Person("kyle", 19);
+        System.out.println(p1.name);
+        System.out.println(p2.name);
+
+
     }
 }
 /*

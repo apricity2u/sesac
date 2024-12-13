@@ -12,6 +12,15 @@ public class Rectangle {
     int width;
     int height;
 
+    Rectangle() {
+        // new Rectangle(10, 10) 과 같은 행동
+        // this.width = 10;
+        // this.height = 10;
+
+        // 여기서 this는 아래의 매개변수를 받는 Rectangle 생성자
+        this(10, 10);
+    }
+
     /*
      this 객체 자신
      오른쪽: 입력,값 width
