@@ -53,5 +53,16 @@ public class Main {
         account.getBalance("1234"); // 비밀번호가 같으면 잔액 조회 가능
         account.getBalance("123");  // 비밀번호가 다르면 잔액 조회 불가
 
+        // 비밀번호 유효성 검사
+        String myPassword = "abc";
+        if (!BankAccount.validateInitialPassword(myPassword)) {
+            System.out.println("failed");
+            // return;
+        }else {
+
+            // else 없이 하는게 자연스러움
+            BankAccount account1 = new BankAccount(myPassword);
+        }
+
     }
 }
