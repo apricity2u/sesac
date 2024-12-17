@@ -4,11 +4,15 @@ public class Character {
     protected String name;
     protected int level;
     protected int hp;
+    // private으로 설정하고, setter를 만들어서 값을 변경하는게 나을 수도
+    protected int maxHp;
     protected boolean isDead;
 
     public Character(String name) {
         this.name = name;
         this.level = 1;
+        this.hp = 100;
+        this.maxHp = 100;
         this.isDead = false;
     }
 
@@ -35,4 +39,9 @@ public class Character {
     public int levelup(){
         return ++level;
     }
+
+//    public void levelup(){
+//        level += 1;
+//        System.out.println(level);
+//    }
 }

@@ -44,17 +44,20 @@ public class Main {
 
         System.out.println();
         // Character 상속
+        Character c = new Character("c");
+        c.attack();
+        c.levelup();
 
         // warrior 세팅
-        Warrior w = new Warrior("warrior");
-        System.out.println(w.level);
-        System.out.println(w.hp);
-        System.out.println(w.getAngerGauge());
+        Warrior warrior = new Warrior("warrior");
+        System.out.println(warrior.level);
+        System.out.println(warrior.hp);
+        System.out.println(warrior.getRage());
 
-        w.levelup();
+        warrior.levelup();
 
-        System.out.println(w.level);
-        System.out.println(w.hp);
+        System.out.println(warrior.level);
+        System.out.println(warrior.hp);
 
         System.out.println();
 
@@ -73,21 +76,21 @@ public class Main {
 
         // mage ---- attack ----> warrior
         m.attack();
-        w.attacked();
+        warrior.attacked();
 
         // warrior ---- attack ----> mage
-        w.attack();
+        warrior.attack();
         m.attacked();
 
         m.attack();
-        w.attacked();
+        warrior.attacked();
 
         System.out.println();
 
         // 공격 주고 받고 현재 상태
-        System.out.println(w.level);
-        System.out.println(w.hp);
-        System.out.println(w.getAngerGauge());
+        System.out.println(warrior.level);
+        System.out.println(warrior.hp);
+        System.out.println(warrior.getRage());
         System.out.println(m.level);
         System.out.println(m.hp);
         System.out.println(m.getMana());
