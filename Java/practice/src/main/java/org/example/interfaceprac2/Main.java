@@ -30,12 +30,18 @@ public class Main {
 
         // 캐릭터
 
-        Character warrior = new Warrior("warrior");
-        Character warrior2 = new Warrior("warrior2");
+        Warrior warrior = new Warrior("warrior");
+        Mage mage = new Mage("mage");
+        warrior.showInfo();
+        mage.showInfo();
 
-        warrior.attack(warrior2);
-
-
+        warrior.attack(mage);
+        mage.attack(warrior);
+        mage.attack(warrior);
+        mage.attack(warrior);
+        mage.attack(warrior);
+        mage.attack(warrior);
+        mage.attack(warrior);
 
     }
 }
