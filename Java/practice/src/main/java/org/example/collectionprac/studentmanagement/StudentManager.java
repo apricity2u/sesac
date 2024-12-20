@@ -29,6 +29,18 @@ public class StudentManager {
         System.out.println(studentlist);
     }
 
+    // 연습 : 학생 이름만 담은 리스트를 만들어서 반환
+    public List<String> getStudentList2() {
+
+        List<String> studentNames= new ArrayList<>();
+
+        for (Student student : studentlist) {
+            studentNames.add(student.getName());
+        }
+
+        return studentNames;
+    }
+
     // 학생들 정보 조회
     public void getStudentsInfo() {
 
@@ -39,7 +51,8 @@ public class StudentManager {
     }
 
     // 특정 학생 조회하기
-    public Student findStudentByName(String name) {
+    // 우리가 기획을 탄탄하게 하고 어떤게 필요한지에 따라 return 타입이 정해지는 것
+    public Student getStudentByName(String name) {
         // 이름이 같은 학생을 return하자.
         for (Student student : studentlist) {
             if (student.getName().equals(name)){
@@ -47,6 +60,18 @@ public class StudentManager {
             }
         }
         return null;
+    }
+
+    public void findStudentByName(String name) {
+
+        for (Student student : studentlist) {
+            if (student.getName().equals(name)){
+                student.showInfo();
+                return;
+            }
+        }
+
+        System.out.println("Cannot find " + name);
     }
 
 }

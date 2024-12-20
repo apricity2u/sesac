@@ -1,10 +1,5 @@
 package org.example.collectionprac.studentmanagement;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -30,28 +25,18 @@ public class Main {
         beemo.saveScore("CS", 60);
 
         // 학생 성적 조회
+        System.out.println("-----get student's grade-----");
         System.out.println(jun.getGrade());
 
         // 학생의 성적 평균 계산
+        System.out.println("-----get grade average-----");
         System.out.println(jun.scoreAverage());
 
         // 정보 조회
+        System.out.println("-----get Student info-----");
         jun.showInfo();
 
         // ////////// StudentManager 클래스 //////////
-
-//        // 학생들의 목록
-//        List<Student> studentList = new ArrayList<>();
-//
-//        // 학생 추가하기
-//        studentList.add(jun);
-//        studentList.add(ken);
-//        studentList.add(beemo);
-//        studentList.add(alex);
-//        studentList.add(lynda);
-//
-//        // toString 을 override 해줘야 학생의 이름만 모아서 출력할 수 있다!
-//        System.out.println(studentList);
 
         // 관리자
         StudentManager studentManager = new StudentManager();
@@ -61,11 +46,24 @@ public class Main {
         studentManager.addStudent(beemo);
         studentManager.addStudent(ken);
 
-        // 학생 목록 조회
-        studentManager.getStudentsInfo();
+        // 학생 검색하기
+        System.out.println("-----Student return-----");
+        Student b = studentManager.getStudentByName("jun");
+        b.showInfo();
+
+        System.out.println("-----void return-----");
+        studentManager.findStudentByName("beemo");
+        studentManager.findStudentByName("kyle");
 
         // 학생들의 정보 조회
+        System.out.println("-----get Students Info-----");
+        studentManager.getStudentsInfo();
+
+        // 학생 목록 조회 (이름만 모아서)
+        System.out.println("-----get Student List-----");
         studentManager.getStudentList();
+
+        System.out.println(studentManager.getStudentList2());
 
 
     }
