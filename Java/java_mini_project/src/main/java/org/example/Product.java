@@ -1,6 +1,6 @@
 package org.example;
 
-public abstract class Product {
+public abstract class Product implements Payable{
 
     private String name;
     private int price;
