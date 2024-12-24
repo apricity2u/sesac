@@ -13,6 +13,11 @@ public class VendingMachine implements Payable {
         this.products = new HashMap<String, Product>();
     }
 
+    // getter
+    public Map<String, Product> getProducts() {
+        return products;
+    }
+
     // 상품 결제
     @Override
     public void pay() {

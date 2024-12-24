@@ -12,7 +12,11 @@ public class Main {
         Product chocolate = new Snack("chocolate", 1500, 2);
         Product candy = new Snack("candy", 300, 10);
 
+        // 관리자 생성
+        Manager manager = new Manager(vendingMachine);
 
+        // 자판기에 상품 넣기
+        manager.putProduct(cola);
 
     }
 
