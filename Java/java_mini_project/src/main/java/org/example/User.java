@@ -9,4 +9,12 @@ public class User {
         this.money = money;
         this.paymentType = paymentType;
     }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
 }

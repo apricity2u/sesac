@@ -16,8 +16,6 @@ public class Manager {
 
         Map<String, Product> products = vendingMachine.getProducts();
         products.put(product.getName(), product);
-
-        System.out.println(products);
     }
 
 }
