@@ -6,8 +6,4 @@ public class Beverages extends Product {
         super(name, price, stock);
     }
 
-    @Override
-    public void pay() {
-
-    }
 }

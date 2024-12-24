@@ -6,8 +6,4 @@ public class Snack extends Product {
         super(name, price, stock);
     }
 
-    @Override
-    public void pay() {
-
-    }
 }
