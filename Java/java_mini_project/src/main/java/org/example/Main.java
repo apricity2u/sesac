@@ -21,6 +21,12 @@ public class Main {
         manager.putProduct(chocolate);
         manager.putProduct(candy);
 
+        // 사용자 생성
+        User heather = new User(20000, "CARD");
+        User sunny = new User(10000, "CASH");
+
+
+
     }
 
 }
