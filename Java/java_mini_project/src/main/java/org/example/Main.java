@@ -17,6 +17,9 @@ public class Main {
 
         // 자판기에 상품 넣기
         manager.putProduct(cola);
+        manager.putProduct(cider);
+        manager.putProduct(chocolate);
+        manager.putProduct(candy);
 
     }
 

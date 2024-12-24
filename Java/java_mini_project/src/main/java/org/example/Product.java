@@ -23,4 +23,9 @@ public abstract class Product {
     public int getStock() {
         return stock;
     }
+
+    @Override
+    public String toString() {
+        return "name: " + name + " price: " + price + " stock: " + stock;
+    }
 }
