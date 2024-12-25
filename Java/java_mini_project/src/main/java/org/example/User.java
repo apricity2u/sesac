@@ -14,8 +14,12 @@ public class User {
         return money;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setMoney(int amount) {
+        money = amount;
+    }
+
+    public void putMoney(int amount) {
+        money += amount;
     }
 
     public PaymentType getPaymentType() {

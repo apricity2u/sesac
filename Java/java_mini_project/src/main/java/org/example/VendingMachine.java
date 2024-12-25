@@ -48,6 +48,11 @@ public class VendingMachine implements Payable {
 
             Product product = productList.get(key);
 
+            if (user.getMoney() < product.getPrice() * quantity){
+                user.getPaymentType().alert();
+                break;
+            }
+
             pay(product, quantity);
             sale(product, quantity);
 
