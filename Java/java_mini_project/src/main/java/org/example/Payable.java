@@ -2,5 +2,5 @@ package org.example;
 
 public interface Payable {
 
-    void purchaseProduct(Product product);
+    void purchaseProduct(String productName, Integer productQuantity);
 }

@@ -3,7 +3,7 @@ package org.example;
 public class User {
 
     private int money;
-    private PaymentType paymentType;
+    private final PaymentType paymentType;
 
     public User(int money, PaymentType paymentType) {
         this.money = money;

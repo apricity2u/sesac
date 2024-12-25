@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -27,6 +29,14 @@ public class Main {
 
         // 자판기 시작 버튼 누르기
         vendingMachine.startButton(heather);
+
+        // 구매할 제품과 수량 입력
+        Scanner scanner = new Scanner(System.in);
+        String itemName = scanner.next();
+        String quantity = scanner.next();
+
+        // 자판기에서 결제 진행
+        vendingMachine.purchaseProduct(itemName, Integer.parseInt(quantity));
 
     }
 

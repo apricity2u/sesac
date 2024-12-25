@@ -39,7 +39,33 @@ public class VendingMachine implements Payable {
 
     // 상품 결제
     @Override
-    public void purchaseProduct(Product product) {
+    public void purchaseProduct(String productName, Integer quantity) {
 
+        for (String key : productList.keySet()) {
+            if (!key.equals(productName)){
+                continue;
+            }
+
+            Product product = productList.get(key);
+
+            pay(product, quantity);
+            sale(product, quantity);
+
+            System.out.println("You get " + quantity + " " + productName + ".");
+            System.out.println("Change : " + user.getMoney() + "\n");
+
+            getProductDetail();
+        }
+
+    }
+
+    // 보유금액 - 가격 * 구매 수량
+    private void pay(Product product, Integer quantity){
+        user.setMoney(user.getMoney() - product.getPrice() * quantity);
+    }
+
+    // 재고 - 구매 수량
+    private void sale(Product product, Integer quantity){
+        product.setStock(product.getStock() - quantity);
     }
 }

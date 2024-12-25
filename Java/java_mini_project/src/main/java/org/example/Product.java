@@ -24,6 +24,10 @@ public abstract class Product {
         return stock;
     }
 
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         return "name: " + name + ", price: " + price + ", stock: " + stock;
