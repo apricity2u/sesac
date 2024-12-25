@@ -24,11 +24,11 @@ public class Main {
         manager.putProduct(candy);
 
         // 사용자 생성
-        User heather = new User(20000, PaymentType.CARD);
-        User sunny = new User(10000, PaymentType.CASH);
+        User heather = new User(5000, PaymentType.CARD);
+        User sunny = new User(3000, PaymentType.CASH);
 
         // 자판기 시작 버튼 누르기
-        vendingMachine.pressStartButton(heather);
+        vendingMachine.pressStartButton(sunny);
 
         while (vendingMachine.getRunningStatus()) {
             // 구매할 제품 입력
@@ -37,6 +37,10 @@ public class Main {
 
             // 자판기에서 결제 진행
             vendingMachine.purchaseProduct(itemName);
+
+            // 계속 구매할지 물어보기
+            String continueToBuyProduct = scanner.next();
+            vendingMachine.setRunningStatus(AnswerType.valueOf(continueToBuyProduct));
         }
 
     }
