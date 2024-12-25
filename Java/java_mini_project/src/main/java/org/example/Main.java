@@ -28,7 +28,7 @@ public class Main {
         User sunny = new User(3000, PaymentType.CASH);
 
         // 자판기 시작 버튼 누르기
-        vendingMachine.pressStartButton(sunny);
+        vendingMachine.pressStartButton(heather);
 
         while (vendingMachine.getRunningStatus()) {
             // 구매할 제품 입력
@@ -43,6 +43,12 @@ public class Main {
             vendingMachine.setRunningStatus(AnswerType.valueOf(continueToBuyProduct));
         }
 
+        /* 관리자 메서드 정상 작동!
+        manager.addStock("cola", 10);
+        manager.changePrice("cola", 500);
+        vendingMachine.getProductDetail();
+        manager.getRevenue();
+         */
     }
 
 }

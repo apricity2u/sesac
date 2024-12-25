@@ -2,9 +2,9 @@ package org.example;
 
 public abstract class Product {
 
-    private String name;
-    private int price;
-    private int stock;
+    protected String name;
+    protected int price;
+    protected int stock;
 
     public Product(String name, int price, int stock) {
         this.name = name;
@@ -22,6 +22,10 @@ public abstract class Product {
 
     public int getStock() {
         return stock;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setStock(int stock) {

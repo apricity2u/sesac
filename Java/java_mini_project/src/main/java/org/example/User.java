@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class User {
 
-    private int money;
-    private final PaymentType paymentType;
-    private Map<String, Integer> shoppingList;
+    protected int money;
+    protected final PaymentType paymentType;
+    protected Map<String, Integer> shoppingList;
 
     public User(int money, PaymentType paymentType) {
         this.money = money;
