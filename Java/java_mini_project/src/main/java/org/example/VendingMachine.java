@@ -9,12 +9,13 @@ public class VendingMachine implements Payable {
     private Map<String, Product> productList;
     // 자판기는 유저 정보를 가지고 있다.
     private User user;
+    // 자판기 작동중
+    private boolean isRunning;
 
     public VendingMachine() {
         this.productList = new HashMap<String, Product>();
         this.user = null;
-
-        System.out.println("Vending Machine is available.\n");
+        this.isRunning = false;
     }
 
     // productList의 Getter
@@ -30,8 +31,9 @@ public class VendingMachine implements Payable {
     }
 
     // 자판기 시작 버튼 누르기
-    public void startButton(User user){
+    public void pressStartButton(User user){
         this.user = user;
+        this.isRunning = true;
         System.out.println("Please select what you want.");
         getProductDetail();
         System.out.println();
@@ -39,7 +41,7 @@ public class VendingMachine implements Payable {
 
     // 상품 결제
     @Override
-    public void purchaseProduct(String productName, Integer quantity) {
+    public void purchaseProduct(String productName) {
 
         for (String key : productList.keySet()) {
             if (!key.equals(productName)){
@@ -48,15 +50,16 @@ public class VendingMachine implements Payable {
 
             Product product = productList.get(key);
 
-            if (user.getMoney() < product.getPrice() * quantity){
+            if (user.getMoney() < product.getPrice()){
                 user.getPaymentType().alert();
+                isRunning = false;
                 break;
             }
 
-            pay(product, quantity);
-            sale(product, quantity);
+            pay(product);
+            sale(product);
 
-            System.out.println("You get " + quantity + " " + productName + ".");
+            System.out.println("You get " + productName + ".");
             System.out.println("Change : " + user.getMoney() + "\n");
 
             getProductDetail();
@@ -64,13 +67,17 @@ public class VendingMachine implements Payable {
 
     }
 
+    public boolean getRunningStatus() {
+        return isRunning;
+    }
+
     // 보유금액 - 가격 * 구매 수량
-    private void pay(Product product, Integer quantity){
-        user.setMoney(user.getMoney() - product.getPrice() * quantity);
+    private void pay(Product product){
+        user.setMoney(user.getMoney() - product.getPrice());
     }
 
     // 재고 - 구매 수량
-    private void sale(Product product, Integer quantity){
-        product.setStock(product.getStock() - quantity);
+    private void sale(Product product){
+        product.setStock(product.getStock() - 1);
     }
 }

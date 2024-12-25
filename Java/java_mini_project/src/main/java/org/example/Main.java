@@ -28,15 +28,16 @@ public class Main {
         User sunny = new User(10000, PaymentType.CASH);
 
         // 자판기 시작 버튼 누르기
-        vendingMachine.startButton(heather);
+        vendingMachine.pressStartButton(heather);
 
-        // 구매할 제품과 수량 입력
-        Scanner scanner = new Scanner(System.in);
-        String itemName = scanner.next();
-        String quantity = scanner.next();
+        while (vendingMachine.getRunningStatus()) {
+            // 구매할 제품 입력
+            Scanner scanner = new Scanner(System.in);
+            String itemName = scanner.next();
 
-        // 자판기에서 결제 진행
-        vendingMachine.purchaseProduct(itemName, Integer.parseInt(quantity));
+            // 자판기에서 결제 진행
+            vendingMachine.purchaseProduct(itemName);
+        }
 
     }
 
