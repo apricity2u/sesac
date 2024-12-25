@@ -26,6 +26,6 @@ public abstract class Product {
 
     @Override
     public String toString() {
-        return "name: " + name + " price: " + price + " stock: " + stock;
+        return "name: " + name + ", price: " + price + ", stock: " + stock;
     }
 }

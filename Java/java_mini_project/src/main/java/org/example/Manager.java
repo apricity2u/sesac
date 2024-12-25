@@ -14,7 +14,7 @@ public class Manager {
     // 자판기에 상품 추가하기
     public void putProduct(Product product){
 
-        Map<String, Product> products = vendingMachine.getProducts();
+        Map<String, Product> products = vendingMachine.getProductList();
         products.put(product.getName(), product);
     }
 

@@ -22,10 +22,11 @@ public class Main {
         manager.putProduct(candy);
 
         // 사용자 생성
-        User heather = new User(20000, "CARD");
-        User sunny = new User(10000, "CASH");
+        User heather = new User(20000, PaymentType.CARD);
+        User sunny = new User(10000, PaymentType.CASH);
 
-
+        // 자판기 시작 버튼 누르기
+        vendingMachine.startButton(heather);
 
     }
 

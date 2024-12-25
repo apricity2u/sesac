@@ -3,9 +3,9 @@ package org.example;
 public class User {
 
     private int money;
-    private String paymentType;
+    private PaymentType paymentType;
 
-    public User(int money, String paymentType) {
+    public User(int money, PaymentType paymentType) {
         this.money = money;
         this.paymentType = paymentType;
     }
@@ -14,7 +14,11 @@ public class User {
         return money;
     }
 
-    public String getPaymentType() {
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 }

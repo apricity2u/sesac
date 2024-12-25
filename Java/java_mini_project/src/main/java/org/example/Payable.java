@@ -2,5 +2,5 @@ package org.example;
 
 public interface Payable {
 
-    void pay();
+    void purchaseProduct(Product product);
 }
