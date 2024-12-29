@@ -15,7 +15,7 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     // client에게 요청을 받는다.
-    public Product createProduct(Product newProduct){
+    public Product createProduct(@RequestBody Product newProduct){
         // Service에게 입력받은 데이터를 전달한다.
         return productService.createProduct(newProduct);
     }
