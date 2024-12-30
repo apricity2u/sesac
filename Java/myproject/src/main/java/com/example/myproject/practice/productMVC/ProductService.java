@@ -33,4 +33,52 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Product readProductById(Long id){
+
+        Product product = productRepository.findProductById(id);
+
+        // id 유효성 검사하기
+        if (product == null){
+            throw new IllegalArgumentException("없는 id입니다");
+        }
+
+        return productRepository.findProductById(id);
+    }
+
+    public Product updateProduct(Long id, Product updatedProduct){
+
+        Product product = productRepository.findProductById(id);
+
+        // id 유효성 검사하기
+        if (product == null){
+            throw new IllegalArgumentException("없는 id입니다");
+        }
+
+        // 비즈니스 로직을 처리하고 (validation check)
+        String name = updatedProduct.getName();
+        Integer price = updatedProduct.getPrice();
+
+        if (name == null || name.isBlank()){
+            throw new RuntimeException("name을 입력해주세요.");
+        }
+
+        if (price == null || price == 0){
+            throw new IllegalArgumentException("price를 입력해주세요.");
+        }
+
+        return productRepository.modify(id, updatedProduct);
+
+    }
+
+    public void deleteProduct(Long id){
+        Product product = productRepository.findProductById(id);
+
+        // id 유효성 검사하기
+        if (product == null){
+            throw new IllegalArgumentException("없는 id입니다");
+        }
+
+        productRepository.delete(product);
+    }
+
 }

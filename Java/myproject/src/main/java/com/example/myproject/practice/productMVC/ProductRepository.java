@@ -4,6 +4,7 @@ import com.example.myproject.practice.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductRepository {
 
@@ -30,5 +31,34 @@ public class ProductRepository {
         return products;
     }
 
+    // 내가 원하는 product만 조회하자. (단일 조회)
+    public Product findProductById(Long id){
+        for (Product product : products) {
+            if (product.getId().equals(id)){
+                return product;
+            }
+        }
+        return null;
+    }
+
+    // 데이터를 수정하자
+    public Product modify(Long id, Product updatedProduct){
+        String updatedProductName = updatedProduct.getName();
+        Integer updatedProductPrice = updatedProduct.getPrice();
+
+        for (Product product : products) {
+            if (product.getId().equals(id)){
+                product.setName(updatedProductName);
+                product.setPrice(updatedProductPrice);
+                return product;
+            }
+        }
+        return null;
+    }
+
+    // 데이터를 삭제하자
+    public void delete(Product product){
+        products.remove(product);
+    }
 
 }
