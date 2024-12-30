@@ -1,13 +1,23 @@
 package com.example.demo.mysite.postMVC;
 
 import com.example.demo.mysite.Post;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// 서비스임을 명시함
+@Service
 public class PostService {
 
-    // post를 생성하려면 repository의 save를 가져와야 함.
-    PostRepository postRepository = new PostRepository();
+//    // post를 생성하려면 repository의 save를 가져와야 함.
+//    PostRepository postRepository = new PostRepository();
+
+    // DI
+    PostRepository postRepository;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     // controller에게 데이터를 입력 받아서
     public Post createPost(Post newPost){

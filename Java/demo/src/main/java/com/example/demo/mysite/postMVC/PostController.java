@@ -10,7 +10,16 @@ import java.util.List;
 @RequestMapping("/mvc/posts")
 public class PostController {
 
-    PostService postService = new PostService();
+//    PostService postService = new PostService();
+
+    // DI
+    // 난 PostService를 사용할거야
+    PostService postService;
+
+    // 넌 이제 bean 자리야
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -1,10 +1,12 @@
 package com.example.demo.mysite.postMVC;
 
 import com.example.demo.mysite.Post;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PostRepository {
 
     // Repository는 DB와 상호작용함
