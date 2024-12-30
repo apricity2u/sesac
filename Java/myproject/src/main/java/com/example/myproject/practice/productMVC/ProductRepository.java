@@ -1,11 +1,13 @@
 package com.example.myproject.practice.productMVC;
 
 import com.example.myproject.practice.Product;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Repository
 public class ProductRepository {
 
     // DB 역할을 해줄 ProductList 만들기
