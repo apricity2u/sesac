@@ -10,7 +10,7 @@ public class ProductService {
 
     // product를 만들어야 하니까, save를 호출해야함.
     // ProductRepository를 컴포지션으로 가지고 있어야 함.
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;

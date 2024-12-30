@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/mvc/products")
 public class ProductController {
 
-    ProductService productService;
+    private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
