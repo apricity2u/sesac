@@ -10,7 +10,11 @@ import java.util.List;
 @RequestMapping("/mvc/products")
 public class ProductController {
 
-    ProductService productService = new ProductService();
+    ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

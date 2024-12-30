@@ -1,14 +1,20 @@
 package com.example.myproject.practice.productMVC;
 
 import com.example.myproject.practice.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductService {
 
     // product를 만들어야 하니까, save를 호출해야함.
     // ProductRepository를 컴포지션으로 가지고 있어야 함.
-    ProductRepository productRepository = new ProductRepository();
+    ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     // Controller에게 요청을 받아서
     public Product createProduct(Product newProduct){
