@@ -4,6 +4,7 @@ import com.example.demo.myjpasite4.dto.PostCreateRequestDto;
 import com.example.demo.myjpasite4.dto.PostListResponseDto;
 import com.example.demo.myjpasite4.dto.PostResponseDto;
 import com.example.demo.myjpasite4.dto.PostUpdateRequestDto;
+import com.example.demo.myjpasite4.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +43,7 @@ public class PostServiceV4 {
 
     public PostResponseDto readPostById(Long id){
         PostV4 post = postRepositoryV4.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("없는 id입니다."));
+                .orElseThrow(()-> new ResourceNotFoundException());
         return PostResponseDto.from(post);
     }
 
@@ -51,7 +52,7 @@ public class PostServiceV4 {
     @Transactional
     public PostResponseDto updatePost(Long id, PostUpdateRequestDto requestDto){
         PostV4 post = postRepositoryV4.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("없는 id입니다."));
+                .orElseThrow(() -> new ResourceNotFoundException());
         post.update(requestDto);
         // Transactional : Dirty Checking이 되기 때문에 따로 저장하지 않아도 됨
         // postRepositoryV4.save(post);

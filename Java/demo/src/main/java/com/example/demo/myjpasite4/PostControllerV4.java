@@ -4,6 +4,8 @@ import com.example.demo.myjpasite4.dto.PostCreateRequestDto;
 import com.example.demo.myjpasite4.dto.PostListResponseDto;
 import com.example.demo.myjpasite4.dto.PostResponseDto;
 import com.example.demo.myjpasite4.dto.PostUpdateRequestDto;
+import com.example.demo.myjpasite4.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +20,18 @@ public class PostControllerV4 {
 
     private final PostServiceV4 postServiceV4;
 
+//    @ExceptionHandler(ResourceNotFoundException.class)
+//    public ResponseEntity<ApiResponse<Void>> handleResourceNotFound(ResourceNotFoundException ex) {
+//        return ResponseEntity
+//                .status(HttpStatus.NOT_FOUND)
+//                .body(ApiResponse.error("resoure not found", "NOT_FOUND"));
+//                // .body(ApiResponse.error(ex.getMessage(), "NOT_FOUND"));
+//    }
+
     //Post method / url / data
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ApiResponse<PostResponseDto>> createPost(@RequestBody PostCreateRequestDto requestDto){
+    public ResponseEntity<ApiResponse<PostResponseDto>> createPost(@Valid @RequestBody PostCreateRequestDto requestDto){
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
