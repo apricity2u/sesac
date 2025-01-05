@@ -6,20 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
-public class ProductCreateRequestDto {
+public class ProductUpdateRequestDto {
 
     private String name;
     private Integer price;
-    private String author;
-
-    @Builder
-    public ProductJpaV2 toEntity(){
-        return ProductJpaV2.builder()
-                .name(this.name)
-                .price(this.price)
-                .author(this.author)
-                .build();
-    }
 
 }
