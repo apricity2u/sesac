@@ -7,6 +7,7 @@ import com.example.practice.mysite.dto.UserUpdateRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,37 +22,51 @@ public class UserController {
     // 1. Create
     // url / method(POST) / 새로운 유저 정보
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto createUser(@Valid @RequestBody UserCreateRequestDto newUser){
-        return userService.createUser(newUser);
+    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@Valid @RequestBody UserCreateRequestDto newUser){
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ApiResponse.ok(
+                        "유저 정보가 성공적으로 저장되었습니다.",
+                        "CREATED",
+                        userService.createUser(newUser)
+                ));
     }
 
     // 2. Read
     // 전체조회 : url / method(GET)
     @GetMapping
-    public List<UserListResponseDto> getUsers(){
-        return userService.getUsers();
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUsers(){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUsers()));
     }
 
     // 단일조회 : url / method(GET) / id
     @GetMapping("/{id}")
-    public UserResponseDto getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
+    public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable Long id){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserById(id)));
     }
 
     // 3. Update
     // url / method(PUT) / id / 변경할 내용
     @PutMapping("/{id}")
-    public UserResponseDto updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequestDto updatedUser){
-        return userService.updateUser(id, updatedUser);
+    public ResponseEntity<ApiResponse<UserResponseDto>> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequestDto updatedUser){
+        return ResponseEntity
+                .ok(ApiResponse.ok(
+                        "유저 정보가 성공적으로 수정되었습니다.",
+                        "UPDATED",
+                        userService.updateUser(id, updatedUser)
+                ));
     }
 
     // 4. Delete
     // url / method(DELETE) / id
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
+        ResponseEntity
+                .ok(ApiResponse.ok(
+                        "유저 정보가 성공적으로 삭제되었습니다.",
+                        "DELETED",
+                        null
+                ));
     }
-
 }
