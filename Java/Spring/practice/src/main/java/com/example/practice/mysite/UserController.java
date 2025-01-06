@@ -1,5 +1,9 @@
 package com.example.practice.mysite;
 
+import com.example.practice.mysite.dto.UserCreateRequestDto;
+import com.example.practice.mysite.dto.UserListResponseDto;
+import com.example.practice.mysite.dto.UserResponseDto;
+import com.example.practice.mysite.dto.UserUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,26 +21,26 @@ public class UserController {
     // url / method(POST) / 새로운 유저 정보
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User newUser){
+    public UserResponseDto createUser(@RequestBody UserCreateRequestDto newUser){
         return userService.createUser(newUser);
     }
 
     // 2. Read
     // 전체조회 : url / method(GET)
     @GetMapping
-    public List<User> getUsers(){
+    public List<UserListResponseDto> getUsers(){
         return userService.getUsers();
     }
 
     // 단일조회 : url / method(GET) / id
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
+    public UserResponseDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
     }
 
     // 3. Update
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User updatedUser){
+    public UserResponseDto updateUser(@PathVariable Long id, @RequestBody UserUpdateRequestDto updatedUser){
         return userService.updateUser(id, updatedUser);
     }
 

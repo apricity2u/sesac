@@ -1,11 +1,11 @@
 package com.example.practice.mysite;
 
+import com.example.practice.mysite.dto.UserUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Entity
@@ -25,10 +25,17 @@ public class User {
     private String nickname;
     private Integer age;
     private Boolean isActive;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
-    public User update(User updatedUser){
+    @Builder
+    public User(String username, String email, String nickname, Integer age) {
+        this.username = username;
+        this.email = email;
+        this.nickname = nickname;
+        this.age = age;
+        this.isActive = true;
+    }
+
+    public User update(UserUpdateRequestDto updatedUser){
         this.nickname = updatedUser.getNickname();
         this.email = updatedUser.getEmail();
         return this;
