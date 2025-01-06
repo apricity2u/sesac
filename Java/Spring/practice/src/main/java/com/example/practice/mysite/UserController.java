@@ -4,6 +4,7 @@ import com.example.practice.mysite.dto.UserCreateRequestDto;
 import com.example.practice.mysite.dto.UserListResponseDto;
 import com.example.practice.mysite.dto.UserResponseDto;
 import com.example.practice.mysite.dto.UserUpdateRequestDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class UserController {
     // url / method(POST) / 새로운 유저 정보
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto createUser(@RequestBody UserCreateRequestDto newUser){
+    public UserResponseDto createUser(@Valid @RequestBody UserCreateRequestDto newUser){
         return userService.createUser(newUser);
     }
 
@@ -41,7 +42,7 @@ public class UserController {
     // 3. Update
     // url / method(PUT) / id / 변경할 내용
     @PutMapping("/{id}")
-    public UserResponseDto updateUser(@PathVariable Long id, @RequestBody UserUpdateRequestDto updatedUser){
+    public UserResponseDto updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequestDto updatedUser){
         return userService.updateUser(id, updatedUser);
     }
 
