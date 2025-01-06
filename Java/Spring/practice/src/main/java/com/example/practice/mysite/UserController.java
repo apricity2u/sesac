@@ -60,9 +60,9 @@ public class UserController {
     // 4. Delete
     // url / method(DELETE) / id
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
-        ResponseEntity
+        return ResponseEntity
                 .ok(ApiResponse.ok(
                         "유저 정보가 성공적으로 삭제되었습니다.",
                         "DELETED",
