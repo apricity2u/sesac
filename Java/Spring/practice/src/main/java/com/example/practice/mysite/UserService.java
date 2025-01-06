@@ -4,6 +4,7 @@ import com.example.practice.mysite.dto.UserCreateRequestDto;
 import com.example.practice.mysite.dto.UserListResponseDto;
 import com.example.practice.mysite.dto.UserResponseDto;
 import com.example.practice.mysite.dto.UserUpdateRequestDto;
+import com.example.practice.mysite.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +36,7 @@ public class UserService {
     // 단일 조회
     public UserResponseDto getUserById(Long id){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("없는 id값입니다."));
+                .orElseThrow(() -> new ResourceNotFoundException("없는 id 값입니다."));
         return UserResponseDto.from(user);
     }
 
@@ -43,7 +44,7 @@ public class UserService {
     @Transactional
     public UserResponseDto updateUser(Long id, UserUpdateRequestDto updatedUser){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("없는 id값입니다"));
+                .orElseThrow(() -> new ResourceNotFoundException("없는 id 값입니다."));
 
         user.update(updatedUser);
         return UserResponseDto.from(user);
@@ -53,7 +54,7 @@ public class UserService {
     @Transactional
     public void deleteUser(Long id){
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("없는 id값입니다"));
+                .orElseThrow(() -> new ResourceNotFoundException("없는 id 값입니다."));
 
         userRepository.delete(user);
     }
