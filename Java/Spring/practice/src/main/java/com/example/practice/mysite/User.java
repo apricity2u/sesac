@@ -28,4 +28,11 @@ public class User {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    public User update(User updatedUser){
+        this.nickname = updatedUser.getNickname();
+        this.email = updatedUser.getEmail();
+        return this;
+    }
+
+
 }
