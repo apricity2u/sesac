@@ -4,6 +4,8 @@ import com.example.practice.mysite.User;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Getter
 public class UserResponseDto {
@@ -14,6 +16,8 @@ public class UserResponseDto {
     private final String nickname;
     private final Integer age;
     private final Boolean isActive;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime updatedAt;
 
     public static UserResponseDto from(User userEntity){
         return UserResponseDto.builder()
@@ -23,6 +27,8 @@ public class UserResponseDto {
                 .nickname(userEntity.getNickname())
                 .age(userEntity.getAge())
                 .isActive(userEntity.getIsActive())
+                .createdAt(userEntity.getCreatedAt())
+                .updatedAt(userEntity.getUpdatedAt())
                 .build();
     }
 
