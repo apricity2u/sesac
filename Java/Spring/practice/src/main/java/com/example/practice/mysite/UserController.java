@@ -39,12 +39,14 @@ public class UserController {
     }
 
     // 3. Update
+    // url / method(PUT) / id / 변경할 내용
     @PutMapping("/{id}")
     public UserResponseDto updateUser(@PathVariable Long id, @RequestBody UserUpdateRequestDto updatedUser){
         return userService.updateUser(id, updatedUser);
     }
 
     // 4. Delete
+    // url / method(DELETE) / id
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable Long id){
