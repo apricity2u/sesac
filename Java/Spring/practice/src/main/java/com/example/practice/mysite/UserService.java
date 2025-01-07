@@ -84,14 +84,22 @@ public class UserService {
 
     // 이메일이 특정 도메인으로 끝나는 사용자 조회
     public List<UserListResponseDto> getUserByEmailDomain(String emailDomain){
-        return userRepository.findByEmailDomain(emailDomain).stream()
+//        return userRepository.findByEmailDomain(emailDomain).stream()
+//                .map(UserListResponseDto :: from)
+//                .toList();
+
+        return userRepository.findByEmailContaining(emailDomain).stream()
+                .map(UserListResponseDto :: from)
+                .toList();
+
+    }
+
+    // 특정 나이 이후의 비활성 사용자 조회
+    public List<UserListResponseDto> getUserByGreaterThanAge(Integer age){
+        return userRepository.findByAgeGreaterThan(age).stream()
+                .filter(User::getIsActive)
                 .map(UserListResponseDto :: from)
                 .toList();
     }
-
-//    public type getUserByDetail(String nickname, Integer age, Boolean isActive){
-//
-//
-//    }
 
 }

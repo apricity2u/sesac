@@ -96,15 +96,11 @@ public class UserController {
         return ResponseEntity.ok(ApiResponse.ok(userService.getUserByEmailDomain(emailDomain)));
     }
 
-//
-//    @GetMapping("/search")
-//    public type getUserByDetail(
-//            @RequestParam(required = false) String nickname,
-//            @RequestParam(required = false) Integer age,
-//            @RequestParam(required = false) Boolean isActive
-//    ){
-//        return userService.getUserByDetail(nickname, age, isActive);
-//    }
+    // 특정 나이의 사용자 조회
+    @GetMapping("/greaterThanAge")
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUserByGreaterThanAge(@RequestParam Integer age){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserByGreaterThanAge(age)));
+    }
 
 
 }
