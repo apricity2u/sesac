@@ -69,4 +69,42 @@ public class UserController {
                         null
                 ));
     }
+
+    // 추가 API
+
+    // 특정 닉네임을 가진 사용자 조회
+    @GetMapping("/nickname")
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUserByNickname(@RequestParam String nickname){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserByNickname(nickname)));
+    }
+
+    // 특정 나이의 사용자 조회
+    @GetMapping("/age")
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUserByAge(@RequestParam Integer age){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserByAge(age)));
+    }
+
+    // 활성화된 사용자 조회
+    @GetMapping("/isActive")
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUserByIsActive(@RequestParam Boolean isActive){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserByIsActive(isActive)));
+    }
+
+    // 이메일이 특정 도메인으로 끝나는 사용자 조회
+    @GetMapping("/email")
+    public ResponseEntity<ApiResponse<List<UserListResponseDto>>> getUserByEmailDomain(@RequestParam String emailDomain){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserByEmailDomain(emailDomain)));
+    }
+
+//
+//    @GetMapping("/search")
+//    public type getUserByDetail(
+//            @RequestParam(required = false) String nickname,
+//            @RequestParam(required = false) Integer age,
+//            @RequestParam(required = false) Boolean isActive
+//    ){
+//        return userService.getUserByDetail(nickname, age, isActive);
+//    }
+
+
 }

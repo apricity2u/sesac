@@ -38,6 +38,8 @@ public class User extends BaseTimeEntity {
     public User update(UserUpdateRequestDto updatedUser){
         this.nickname = updatedUser.getNickname();
         this.email = updatedUser.getEmail();
+        this.isActive = updatedUser.getIsActive();
+        this.age = updatedUser.getAge();
         return this;
     }
 

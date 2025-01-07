@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -58,5 +59,39 @@ public class UserService {
 
         userRepository.delete(user);
     }
+
+    // 추가 API
+    // 특정 닉네임을 가진 사용자 조회
+    public List<UserListResponseDto> getUserByNickname(String nickname){
+        return userRepository.findByNickname(nickname).stream()
+                .map(UserListResponseDto :: from)
+                .toList();
+    }
+
+    // 특정 나이를 가진 사용자 조회
+    public List<UserListResponseDto> getUserByAge(Integer age){
+        return userRepository.findByAge(age).stream()
+                .map(UserListResponseDto :: from)
+                .toList();
+    }
+
+    // 활성화된 사용자 조회
+    public List<UserListResponseDto> getUserByIsActive(Boolean isActive){
+        return userRepository.findByIsActive(isActive).stream()
+                .map(UserListResponseDto :: from)
+                .toList();
+    }
+
+    // 이메일이 특정 도메인으로 끝나는 사용자 조회
+    public List<UserListResponseDto> getUserByEmailDomain(String emailDomain){
+        return userRepository.findByEmailDomain(emailDomain).stream()
+                .map(UserListResponseDto :: from)
+                .toList();
+    }
+
+//    public type getUserByDetail(String nickname, Integer age, Boolean isActive){
+//
+//
+//    }
 
 }
