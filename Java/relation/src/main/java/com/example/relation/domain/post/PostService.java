@@ -1,9 +1,8 @@
 package com.example.relation.domain.post;
 
-import com.example.relation.domain.post.dto.PostCreateRequestDto;
-import com.example.relation.domain.post.dto.PostListResponseDto;
-import com.example.relation.domain.post.dto.PostResponseDto;
-import com.example.relation.domain.post.dto.PostUpdateRequestDto;
+import com.example.relation.domain.comment.Comment;
+import com.example.relation.domain.comment.CommentRepository;
+import com.example.relation.domain.post.dto.*;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class PostService {
-    private final PostRepository postRepository;
 
+    private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
 
     @Transactional
     public PostResponseDto createPost(PostCreateRequestDto requestDto) {
@@ -30,9 +30,11 @@ public class PostService {
                 .toList();
     }
 
-    public PostResponseDto readPostById(Long id){
+    public PostWithCommentResponseDto readPostById(Long id){
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
-        return PostResponseDto.from(post);
+        List<Comment> comments = commentRepository.findByPostId(id);
+
+        return PostWithCommentResponseDto.from(post, comments);
     }
 
     @Transactional
