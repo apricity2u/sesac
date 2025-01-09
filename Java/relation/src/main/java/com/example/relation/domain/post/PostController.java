@@ -60,7 +60,22 @@ public class PostController {
         postService.deletePost(id);
         ApiResponse<Void> response = ApiResponse.ok("게시글이 성공적으로 삭제되었습니다", "DELETED", null);
         return ResponseEntity.ok(response);
+    }
 
+    @GetMapping("/comment-count")
+    public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostswithCommentCount(){
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostswithCommentCount()
+        ));
+    }
+
+    @GetMapping("/comment-count-dto")
+    public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostsWithCommentCountDto() {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsWithCommentCountDto()
+                )
+        );
     }
 
 }

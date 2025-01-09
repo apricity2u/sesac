@@ -1,5 +1,6 @@
 package com.example.relation.domain.post;
 
+import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
 import jakarta.persistence.Entity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +26,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @EntityGraph(attributePaths = {"comments"})
     @Query("SELECT p FROM Post p")
     List<Post> findAllWithCommentEntityGraph();
+
+    @Query("SELECT p, Count(c) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    List<Object[]> findAllWithCommentCount();
+
+    @Query("SELECT new com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto(p.id, p.title, p.createdAt, COUNT(c)) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
 }
