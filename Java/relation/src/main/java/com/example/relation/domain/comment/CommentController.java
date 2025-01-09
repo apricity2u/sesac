@@ -32,5 +32,20 @@ public class CommentController {
                 );
     }
 
+    @PutMapping("/{commentId}")
+    public ResponseEntity<ApiResponse<CommentResponseDto>> updateComment(
+            @PathVariable Long postId,
+            @PathVariable Long commentId,
+            @RequestBody CommentRequestDto requestDto
+    ){
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        "댓글이 성공적으로 수정되었습니다",
+                        "UPDATED",
+                        commentService.updateComment(postId, commentId, requestDto)
+                )
+        );
+    }
+
 
 }

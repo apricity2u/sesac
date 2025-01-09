@@ -27,4 +27,15 @@ public class CommentService {
         return CommentResponseDto.from(commentRepository.save(comment));
     }
 
+    @Transactional
+    public CommentResponseDto updateComment(Long postId, Long commentId, CommentRequestDto requestDto){
+        // 1. 댓글을 먼저 찾는다
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("댓글이 존재하지 않습니다."));
+        // EntityManager가 관리하기 시작 (영속 상태가 됨)
+        // dirty checking이 발생하여, commit 시점에 자동으로 반영됨
+        comment.update(requestDto);
+        return CommentResponseDto.from(comment);
+    }
+
 }

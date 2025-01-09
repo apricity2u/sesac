@@ -22,6 +22,9 @@ public class UserService {
     // 1. Create
     @Transactional
     public UserResponseDto createUser(UserCreateRequestDto newUser){
+
+        // 중복 불가를 Service에서도 한 번 처리해보자
+
         User user = userRepository.save(newUser.toEntity());
         return UserResponseDto.from(user);
     }

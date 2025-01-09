@@ -26,6 +26,10 @@ public class User extends BaseTimeEntity {
     private Integer age;
     private Boolean isActive;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
+
     @Builder
     public User(String username, String email, String nickname, Integer age) {
         this.username = username;
