@@ -1,6 +1,8 @@
-package com.example.practice.mysite;
+package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.dto.UserUpdateRequestDto;
+import com.example.practice.mysite.BaseTimeEntity;
+import com.example.practice.mysite.domain.team.Team;
+import com.example.practice.mysite.domain.user.dto.UserUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,11 +33,12 @@ public class User extends BaseTimeEntity {
     private Team team;
 
     @Builder
-    public User(String username, String email, String nickname, Integer age) {
+    public User(String username, String email, String nickname, Integer age, Team team) {
         this.username = username;
         this.email = email;
         this.nickname = nickname;
         this.age = age;
+        this.team = team;
         this.isActive = true;
     }
 

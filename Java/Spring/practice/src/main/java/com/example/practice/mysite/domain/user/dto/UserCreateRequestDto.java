@@ -1,9 +1,9 @@
-package com.example.practice.mysite.dto;
+package com.example.practice.mysite.domain.user.dto;
 
-import com.example.practice.mysite.User;
+import com.example.practice.mysite.domain.team.Team;
+import com.example.practice.mysite.domain.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -28,12 +28,13 @@ public class UserCreateRequestDto {
     @Range(min=0, max=150, message = "나이는 최대 150살까지만 입력 가능합니다.")
     private Integer age;
 
-    public User toEntity(){
+    public User toEntity(Team team){
         return User.builder()
                 .username(this.getUsername())
                 .email(this.getEmail())
                 .nickname(this.getNickname())
                 .age(this.getAge())
+                .team(team)
                 .build();
     }
 

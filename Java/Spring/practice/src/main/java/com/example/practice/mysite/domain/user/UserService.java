@@ -1,15 +1,16 @@
-package com.example.practice.mysite;
+package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.dto.UserCreateRequestDto;
-import com.example.practice.mysite.dto.UserListResponseDto;
-import com.example.practice.mysite.dto.UserResponseDto;
-import com.example.practice.mysite.dto.UserUpdateRequestDto;
+import com.example.practice.mysite.domain.team.Team;
+import com.example.practice.mysite.domain.team.TeamRepository;
+import com.example.practice.mysite.domain.user.dto.UserCreateRequestDto;
+import com.example.practice.mysite.domain.user.dto.UserListResponseDto;
+import com.example.practice.mysite.domain.user.dto.UserResponseDto;
+import com.example.practice.mysite.domain.user.dto.UserUpdateRequestDto;
 import com.example.practice.mysite.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,14 +19,15 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final TeamRepository teamRepository;
 
     // 1. Create
     @Transactional
-    public UserResponseDto createUser(UserCreateRequestDto newUser){
-
+    public UserResponseDto createUser(Long teamId, UserCreateRequestDto newUser){
         // 중복 불가를 Service에서도 한 번 처리해보자
 
-        User user = userRepository.save(newUser.toEntity());
+        Team team = teamRepository.findById(teamId).orElseThrow(()->new ResourceNotFoundException());
+        User user = userRepository.save(newUser.toEntity(team));
         return UserResponseDto.from(user);
     }
 
@@ -38,9 +40,10 @@ public class UserService {
     }
 
     // 단일 조회
-    public UserResponseDto getUserById(Long id){
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("없는 id 값입니다."));
+    public UserResponseDto getUserById(Long teamId, Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("없는 유저입니다."));
+
         return UserResponseDto.from(user);
     }
 

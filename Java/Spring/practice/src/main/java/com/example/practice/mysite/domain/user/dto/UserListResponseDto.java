@@ -1,6 +1,6 @@
-package com.example.practice.mysite.dto;
+package com.example.practice.mysite.domain.user.dto;
 
-import com.example.practice.mysite.User;
+import com.example.practice.mysite.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 

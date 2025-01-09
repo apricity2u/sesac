@@ -1,9 +1,10 @@
-package com.example.practice.mysite;
+package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.dto.UserCreateRequestDto;
-import com.example.practice.mysite.dto.UserListResponseDto;
-import com.example.practice.mysite.dto.UserResponseDto;
-import com.example.practice.mysite.dto.UserUpdateRequestDto;
+import com.example.practice.mysite.ApiResponse;
+import com.example.practice.mysite.domain.user.dto.UserCreateRequestDto;
+import com.example.practice.mysite.domain.user.dto.UserListResponseDto;
+import com.example.practice.mysite.domain.user.dto.UserResponseDto;
+import com.example.practice.mysite.domain.user.dto.UserUpdateRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/team/{teamId}/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -22,13 +23,13 @@ public class UserController {
     // 1. Create
     // url / method(POST) / 새로운 유저 정보
     @PostMapping
-    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@Valid @RequestBody UserCreateRequestDto newUser){
+    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@PathVariable Long teamId, @Valid @RequestBody UserCreateRequestDto newUser){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(ApiResponse.ok(
                         "유저 정보가 성공적으로 저장되었습니다.",
                         "CREATED",
-                        userService.createUser(newUser)
+                        userService.createUser(teamId, newUser)
                 ));
     }
 
@@ -40,14 +41,14 @@ public class UserController {
     }
 
     // 단일조회 : url / method(GET) / id
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable Long id){
-        return ResponseEntity.ok(ApiResponse.ok(userService.getUserById(id)));
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable Long teamId, @PathVariable Long userId){
+        return ResponseEntity.ok(ApiResponse.ok(userService.getUserById(teamId, userId)));
     }
 
     // 3. Update
     // url / method(PUT) / id / 변경할 내용
-    @PutMapping("/{id}")
+    @PutMapping("/{userId}")
     public ResponseEntity<ApiResponse<UserResponseDto>> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequestDto updatedUser){
         return ResponseEntity
                 .ok(ApiResponse.ok(
@@ -59,7 +60,7 @@ public class UserController {
 
     // 4. Delete
     // url / method(DELETE) / id
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
         return ResponseEntity
