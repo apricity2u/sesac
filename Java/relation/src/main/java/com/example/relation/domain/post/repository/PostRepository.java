@@ -1,7 +1,7 @@
-package com.example.relation.domain.post;
+package com.example.relation.domain.post.repository;
 
 import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
-import jakarta.persistence.Entity;
+import com.example.relation.domain.post.entity.Post;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -38,4 +38,18 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "LEFT JOIN p.comments c " +
             "GROUP BY p")
     List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
+
+    @Query("SELECT DISTINCT p FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdwithCommentAndTag(@Param("id") Long id);
+
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdWithTag(@Param("id") Long id);
+
 }
