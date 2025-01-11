@@ -39,7 +39,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "GROUP BY p")
     List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
 
-    @Query("SELECT DISTINCT p FROM Post p " +
+    @Query("SELECT p FROM Post p " +
             "LEFT JOIN p.comments c " +
             "LEFT JOIN FETCH p.postTags pt " +
             "LEFT JOIN FETCH pt.tag " +
@@ -51,5 +51,14 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "LEFT JOIN FETCH pt.tag " +
             "WHERE p.id = :id")
     Optional<Post> findByIdWithTag(@Param("id") Long id);
+
+    // 태그 별 게시글 조회
+    @Query("""
+            SELECT p FROM Post p
+            JOIN p.postTags pt
+            JOIN pt.tag t
+            WHERE t.name = :tagName
+            """)
+    List<Post> findAllByTagName(@Param("tagName") String tagName);
 
 }

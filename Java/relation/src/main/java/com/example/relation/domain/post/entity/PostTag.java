@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
+//@Table(uniqueConstraints = (post, tag)) -> DB에서 막는거라, 안 좋음
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)

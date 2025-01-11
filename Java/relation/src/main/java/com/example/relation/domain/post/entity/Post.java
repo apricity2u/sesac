@@ -28,7 +28,7 @@ public class Post extends BaseTimeEntity {
 
     private String author;
 
-    @BatchSize(size = 100)
+//    @BatchSize(size = 100)
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<Comment> comments;
 

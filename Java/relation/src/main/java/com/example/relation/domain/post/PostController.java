@@ -98,6 +98,14 @@ public class PostController {
 
     }
 
+    // Tag별 게시글 가져오기
+    @GetMapping("/tags")
+    public ResponseEntity<ApiResponse<List<PostWithCommentAndTagResponseDtoV2>>> readPostsByTag(@RequestParam String tag){
+        return ResponseEntity.ok(ApiResponse.ok(
+                postService.readPostsByTag(tag)
+        ));
+    }
+
 }
 
 

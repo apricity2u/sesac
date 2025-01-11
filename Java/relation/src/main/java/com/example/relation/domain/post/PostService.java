@@ -94,8 +94,19 @@ public class PostService {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException());
 
+//        Tag tag = tagRepository.findByName(requestDto.getName())
+//                .orElseThrow(() -> new ResourceNotFoundException());
+
         Tag tag = tagRepository.findByName(requestDto.getName())
-                .orElseThrow(() -> new ResourceNotFoundException());
+                .orElseGet(() -> {
+                    // 없는 태그라면 태그를 post하기
+                    Tag newTag = new Tag(requestDto.getName());
+                    return tagRepository.save(newTag);
+                });
+
+        if (postTagRepository.existsByPostAndTag(post, tag)) {
+            throw new DuplicateEntityException();
+        }
 
         PostTag postTag = new PostTag();
         postTag.addPost(post);
@@ -125,6 +136,14 @@ public class PostService {
         .orElseThrow(() -> new ResourceNotFoundException());
 
         return PostWithCommentAndTagResponseDtoV2.from(post);
+    }
+
+    public List<PostWithCommentAndTagResponseDtoV2> readPostsByTag(String tag){
+
+        return postRepository.findAllByTagName(tag).stream()
+                .map(PostWithCommentAndTagResponseDtoV2 :: from)
+                .toList();
+
     }
 
 }
