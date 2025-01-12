@@ -10,6 +10,7 @@ import com.example.relation.domain.post.repository.PostTagRepository;
 import com.example.relation.domain.tag.Tag;
 import com.example.relation.domain.tag.TagRepository;
 import com.example.relation.domain.tag.dto.TagRequestDto;
+import com.example.relation.global.exception.DuplicateEntityException;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -118,6 +119,7 @@ public class PostService {
         postTagRepository.save(postTag);
     }
 
+    // Post와 Comment를 join하지 않고 별개로 가져오기
     public PostWithCommentAndTagResponseDto readPostsByIdWithCommentAndTag(Long id){
 
         //
@@ -131,6 +133,7 @@ public class PostService {
         return PostWithCommentAndTagResponseDto.from(postWithTag, comments);
     }
 
+    // Post 엔티티 내부에 있는 comments 활용하기
     public PostWithCommentAndTagResponseDtoV2 readPostByIdWithCommentAndTagV2(Long id){
         Post post = postRepository.findByIdwithCommentAndTag(id)
         .orElseThrow(() -> new ResourceNotFoundException());

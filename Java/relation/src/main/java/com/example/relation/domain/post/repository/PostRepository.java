@@ -40,17 +40,17 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
 
     @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdWithTag(@Param("id") Long id);
+
+    @Query("SELECT p FROM Post p " +
             "LEFT JOIN p.comments c " +
             "LEFT JOIN FETCH p.postTags pt " +
             "LEFT JOIN FETCH pt.tag " +
             "WHERE p.id = :id")
     Optional<Post> findByIdwithCommentAndTag(@Param("id") Long id);
-
-    @Query("SELECT p FROM Post p " +
-            "LEFT JOIN FETCH p.postTags pt " +
-            "LEFT JOIN FETCH pt.tag " +
-            "WHERE p.id = :id")
-    Optional<Post> findByIdWithTag(@Param("id") Long id);
 
     // 태그 별 게시글 조회
     @Query("""
