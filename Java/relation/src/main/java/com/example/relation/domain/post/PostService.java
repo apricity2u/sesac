@@ -10,11 +10,14 @@ import com.example.relation.domain.post.repository.PostTagRepository;
 import com.example.relation.domain.tag.Tag;
 import com.example.relation.domain.tag.TagRepository;
 import com.example.relation.domain.tag.dto.TagRequestDto;
+import com.example.relation.global.common.service.FileService;
 import com.example.relation.global.exception.DuplicateEntityException;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class PostService {
     private final CommentRepository commentRepository;
     private final TagRepository tagRepository;
     private final PostTagRepository postTagRepository;
+    private final FileService fileService;
 
     @Transactional
     public PostResponseDto createPost(PostCreateRequestDto requestDto) {
@@ -147,6 +151,38 @@ public class PostService {
                 .map(PostWithCommentAndTagResponseDtoV2 :: from)
                 .toList();
 
+    }
+
+    public List<PostListResponseDto> readPostsWithPage(Pageable pageable){
+        return postRepository.findAll(pageable).getContent().stream().map(
+                PostListResponseDto :: from
+        ).toList();
+    }
+
+    public PostListWithPageResponseDto readPostWithPageDetail(Pageable pageable){
+
+        return PostListWithPageResponseDto.from(postRepository.findAll(pageable));
+    }
+
+    public List<PostWithCommentResponseDtoV2> readPostWithCommentPage(Pageable pageable){
+        return postRepository.findPostsWithCommentPage(pageable).getContent().stream().map(
+                PostWithCommentResponseDtoV2 :: from
+        ).toList();
+    }
+
+    @Transactional
+    public PostWithImageResponseDto createPostWithImage(PostCreateRequestDto requestDto, MultipartFile image){
+
+        String imageUrl = null;
+
+        if (image != null && !image.isEmpty()){
+            imageUrl = fileService.saveFile(image);
+        }
+
+        Post post = requestDto.toEntity();
+        post.setImageUrl(imageUrl);
+
+        return PostWithImageResponseDto.from(postRepository.save(post));
     }
 
 }

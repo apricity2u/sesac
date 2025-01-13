@@ -5,9 +5,11 @@ import com.example.relation.domain.tag.dto.TagRequestDto;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -104,6 +106,31 @@ public class PostController {
         return ResponseEntity.ok(ApiResponse.ok(
                 postService.readPostsByTag(tag)
         ));
+    }
+
+    @GetMapping("/pages")
+    public ResponseEntity<ApiResponse<List<PostListResponseDto>>> readPostsWithPage(Pageable pageable){
+        return ResponseEntity.ok(ApiResponse.ok(postService.readPostsWithPage(pageable)));
+    }
+
+    @GetMapping("/pages/detail")
+    public ResponseEntity<ApiResponse<PostListWithPageResponseDto>> readPostWithPageDetail(Pageable pageable){
+        return ResponseEntity.ok(ApiResponse.ok(postService.readPostWithPageDetail(pageable)));
+    }
+
+    @GetMapping("/detail/pages")
+    public ResponseEntity<ApiResponse<List<PostWithCommentResponseDtoV2>>> readPostWithCommentPage(Pageable pageable){
+        return ResponseEntity.ok(ApiResponse.ok(postService.readPostWithCommentPage(pageable)));
+    }
+
+    @PostMapping("/images")
+    public ResponseEntity<ApiResponse<PostWithImageResponseDto>> createPostWithImage(
+            @RequestPart(value = "data") PostCreateRequestDto requestDto,
+            @RequestPart(value = "image", required = false) MultipartFile image
+            // 이미지가 없어도 게시글 생성 가능
+            // 이미지를 여러 개 등록 가능하기 때문에 List<MultipartFile> 로 받아도 됨
+    ){
+        return ResponseEntity.ok(ApiResponse.ok(postService.createPostWithImage(requestDto, image)));
     }
 
 }
