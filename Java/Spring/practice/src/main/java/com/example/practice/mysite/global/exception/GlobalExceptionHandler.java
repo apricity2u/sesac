@@ -1,6 +1,6 @@
-package com.example.practice.mysite.exception;
+package com.example.practice.mysite.global.exception;
 
-import com.example.practice.mysite.ApiResponse;
+import com.example.practice.mysite.global.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

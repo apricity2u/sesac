@@ -1,4 +1,4 @@
-package com.example.practice.mysite;
+package com.example.practice.mysite.global.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

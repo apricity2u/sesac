@@ -1,6 +1,6 @@
 package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.ApiResponse;
+import com.example.practice.mysite.global.ApiResponse;
 import com.example.practice.mysite.domain.user.dto.UserCreateRequestDto;
 import com.example.practice.mysite.domain.user.dto.UserListResponseDto;
 import com.example.practice.mysite.domain.user.dto.UserResponseDto;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/team/{teamId}/user")
+@RequestMapping("/teams/{teamId}/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -71,7 +71,7 @@ public class UserController {
                 ));
     }
 
-    // 추가 API
+    // [ 추가 API ]
 
     // 특정 닉네임을 가진 사용자 조회
     @GetMapping("/nickname")

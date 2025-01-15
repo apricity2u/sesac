@@ -1,6 +1,6 @@
 package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.BaseTimeEntity;
+import com.example.practice.mysite.global.entity.BaseTimeEntity;
 import com.example.practice.mysite.domain.team.Team;
 import com.example.practice.mysite.domain.user.dto.UserUpdateRequestDto;
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package com.example.practice.mysite.domain.team;
 
-import com.example.practice.mysite.ApiResponse;
+import com.example.practice.mysite.global.ApiResponse;
 import com.example.practice.mysite.domain.team.dto.TeamRequestDto;
 import com.example.practice.mysite.domain.team.dto.TeamResponseDto;
 import jakarta.validation.Valid;
@@ -9,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/team")
+@RequestMapping("/teams")
 @RequiredArgsConstructor
 public class TeamController {
 
@@ -28,5 +30,21 @@ public class TeamController {
                         teamService.createTeam(requestDto)
                 ));
     }
+
+    // 2. Team 조회하기
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<TeamResponseDto>>> readTeams(){
+        return ResponseEntity.ok(ApiResponse.ok(teamService.readTeams()));
+    }
+
+    @GetMapping("/{teamId}")
+    public ResponseEntity<ApiResponse<TeamResponseDto>> readTeamById(@PathVariable Long teamId){
+        return ResponseEntity.ok(ApiResponse.ok(teamService.readTeamById(teamId)));
+    }
+
+    // 3. Team 수정하기
+    @PutMapping("/{teamId}")
+    public type update
+
 
 }

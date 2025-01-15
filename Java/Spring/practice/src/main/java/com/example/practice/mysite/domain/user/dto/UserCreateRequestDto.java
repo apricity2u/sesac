@@ -28,13 +28,12 @@ public class UserCreateRequestDto {
     @Range(min=0, max=150, message = "나이는 최대 150살까지만 입력 가능합니다.")
     private Integer age;
 
-    public User toEntity(Team team){
+    public User toEntity(){
         return User.builder()
                 .username(this.getUsername())
                 .email(this.getEmail())
                 .nickname(this.getNickname())
                 .age(this.getAge())
-                .team(team)
                 .build();
     }
 

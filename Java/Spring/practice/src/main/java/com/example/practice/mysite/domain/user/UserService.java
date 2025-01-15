@@ -1,12 +1,10 @@
 package com.example.practice.mysite.domain.user;
 
-import com.example.practice.mysite.domain.team.Team;
-import com.example.practice.mysite.domain.team.TeamRepository;
 import com.example.practice.mysite.domain.user.dto.UserCreateRequestDto;
 import com.example.practice.mysite.domain.user.dto.UserListResponseDto;
 import com.example.practice.mysite.domain.user.dto.UserResponseDto;
 import com.example.practice.mysite.domain.user.dto.UserUpdateRequestDto;
-import com.example.practice.mysite.exception.ResourceNotFoundException;
+import com.example.practice.mysite.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,15 +17,13 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final TeamRepository teamRepository;
 
     // 1. Create
     @Transactional
     public UserResponseDto createUser(Long teamId, UserCreateRequestDto newUser){
         // 중복 불가를 Service에서도 한 번 처리해보자
 
-        Team team = teamRepository.findById(teamId).orElseThrow(()->new ResourceNotFoundException());
-        User user = userRepository.save(newUser.toEntity(team));
+        User user = userRepository.save(newUser.toEntity());
         return UserResponseDto.from(user);
     }
 

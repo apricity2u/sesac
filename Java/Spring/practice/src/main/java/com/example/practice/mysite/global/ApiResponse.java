@@ -1,4 +1,4 @@
-package com.example.practice.mysite;
+package com.example.practice.mysite.global;
 
 import lombok.Getter;
 

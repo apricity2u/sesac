@@ -1,6 +1,6 @@
 package com.example.practice.mysite.domain.team;
 
-import com.example.practice.mysite.BaseTimeEntity;
+import com.example.practice.mysite.global.entity.BaseTimeEntity;
 import com.example.practice.mysite.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Team extends BaseTimeEntity {
+public class  Team extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
