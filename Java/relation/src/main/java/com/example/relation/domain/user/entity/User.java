@@ -1,4 +1,4 @@
-package com.example.relation.domain.user;
+package com.example.relation.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

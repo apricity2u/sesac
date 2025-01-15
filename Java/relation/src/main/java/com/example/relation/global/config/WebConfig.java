@@ -1,4 +1,4 @@
-package com.example.relation.global;
+package com.example.relation.global.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
