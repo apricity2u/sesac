@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -51,7 +52,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             // 6. security context(인증이 들어있는 공간)에 인증 객체 넣기
             // 사용자의 인증 정보를 저장, 관리하는 객체
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            // SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            SecurityContext context = SecurityContextHolder.createEmptyContext();
+            context.setAuthentication(authentication);
+            SecurityContextHolder.setContext(context);
         }
 
         filterChain.doFilter(request, response);
