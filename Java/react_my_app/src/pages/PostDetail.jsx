@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Form, useNavigate, useParams } from 'react-router-dom';
 import postApi from '../api/postsApi';
+import CommentForm from '../components/CommentForm';
 
 export default function PostDetail() {
   const [post, setPost] = useState({});
@@ -50,6 +51,8 @@ export default function PostDetail() {
       ) : (
         <div>댓글이 없습니다.</div>
       )}
+      <hr />
+      <CommentForm setPost={setPost} postId={postId}></CommentForm>
     </div>
   );
 }
