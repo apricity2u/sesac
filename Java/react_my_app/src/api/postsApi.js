@@ -21,7 +21,7 @@ const postApi = {
 
   // 댓글 POST
   createComment: async (postId, formData) => {
-    const response = await api.post(ENDPOINT, postId, formData);
+    const response = await api.post(`${ENDPOINT}/${postId}/comments`, formData);
     return response;
   },
 };
