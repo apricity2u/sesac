@@ -42,6 +42,7 @@ export default function PostDetail() {
         })}
       </div>
       <hr />
+      <CommentForm setPost={setPost} postId={postId}></CommentForm>
       {post?.comments?.length ? (
         <ol>
           {post?.comments?.map((comment) => {
@@ -51,8 +52,6 @@ export default function PostDetail() {
       ) : (
         <div>댓글이 없습니다.</div>
       )}
-      <hr />
-      <CommentForm setPost={setPost} postId={postId}></CommentForm>
     </div>
   );
 }

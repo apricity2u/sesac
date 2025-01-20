@@ -13,6 +13,7 @@ export default function CommentForm({ setPost, postId }) {
         console.log(content);
         const response = await postApi.createComment(postId, formData);
         const data = response.data;
+        console.log(data)
         setPost((prev) => {
           return {
             ...prev,
