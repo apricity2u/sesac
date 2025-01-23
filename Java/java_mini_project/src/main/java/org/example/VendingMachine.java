@@ -88,12 +88,22 @@ public class VendingMachine implements Payable {
     public void setRunningStatus(AnswerType answerType) {
 
         try {
-            switch (answerType){
-                case YES :
-                    break;
-                case NO :
-                    isRunning = false;
+            flag
+            do() while
+            while(flag){
+
+                switch (answerType){
+                    case YES :
+                        플래그를 바꿔서 탈출하고?
+                        break;
+                    case NO :
+                        isRunning = false;
+                    default:
+                        falg를 안바꾸고
+
+                }
             }
+
         }catch (IllegalAccessError e){
             // TODO 잘못된 답변을 입력하는 경우. 답변 재입력할 수 있게 해야함.
             System.out.println("Please enter it again. (YES / NO)");
