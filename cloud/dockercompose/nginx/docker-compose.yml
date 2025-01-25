@@ -1,0 +1,11 @@
+# docker-compose 문법 버전
+version: '3.8'
+
+# 컨테이너(서비스) 관리 블록들의 최상위 블록
+services:
+  nginx:
+    image: nginx:stable
+    ports:
+      - "80:80"
+
+# docker run -p 80:80 nginx:stable
